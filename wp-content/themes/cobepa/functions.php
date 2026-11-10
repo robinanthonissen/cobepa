@@ -7,6 +7,7 @@ include_once 'functions/enqueue-scripts.php';		 // LOAD SCRIPTS
 
 // THEME FUNCTIONS
 include_once 'functions/helpers.php';                // HELPER FUNCTIONS
+include_once 'functions/breadcrumbs.php';            // KRUIMELPAD
 include_once 'functions/setup.php';				     // GENERAL THEME SETUP
 include_once 'functions/acf.php';					 // ACF OPTIMIZATIONS
 include_once 'functions/cpt.php';					 // CUSTOM POST TYPES
@@ -19,6 +20,7 @@ include_once 'functions/archive-title.php';		     // ARCHIVE TITLE
 include_once 'functions/admin.php';				     // ADMIN
 include_once 'functions/login.php';				     // LOGIN
 include_once 'functions/gutenberg.php';			     // GUTENBERG
+include_once 'functions/forms.php';				 // CONTACT FORM 7
 include_once 'functions/acf.php';					 // ACF OPTIMIZATIONS
 include_once 'functions/timber.php';				 // INITIALIZE TIMBER
 include_once 'functions/events.php';				 // EVENEMENTEN (na Timber)

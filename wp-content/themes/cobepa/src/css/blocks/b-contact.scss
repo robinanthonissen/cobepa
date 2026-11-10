@@ -1,65 +1,192 @@
-.b-contact{
-    background-color: $white;
-    padding: 3.2rem 0;
+// ----------------------------------------
+// Contact
+// ----------------------------------------
+.b-contact {
+	padding: 4.8rem 0 8rem;
+	background-color: $cream;
 
-    @include media(md){
-        padding: 4.8rem 0;
-    }
-    @include media(lg){
-        padding: 6.4rem 0;
-    }
-    @include media(xl){
-        padding: 7.2rem 0;
-    }
-    
-    h3{
-        margin-bottom: 1.6rem;
-    }
+	@include media(lg) {
+		padding: 6.4rem 0 10.4rem;
+	}
 
-    &__form{
-        flex-basis: 100%;
-        max-width: 100%;
-        margin-bottom: 2.4rem;
+	&__panel {
+		position: relative;
+		z-index: 1; // boven de paginakop bij overlap
+		display: flex;
+		flex-wrap: wrap;
+		box-shadow: $box-shadow-lg;
+	}
 
-        @include media(md){
-            flex-basis: 50%;
-            max-width: 50%;
-            padding-right: 4rem;
-            border-right: 1px solid $light;
-        }
-        @include media(lg){
-            flex-basis: 66.667%;
-            max-width: 66.667%;
-        }
+	&__form {
+		flex: 999 1 56rem;
+		min-width: 0;
+		padding: 3.2rem 2.4rem;
+		background-color: $white;
 
-        &-inner{}
-        &-form{}
-    }
-    &__info{
-        flex-basis: 100%;
-        max-width: 100%;
-        margin-bottom: 2.4rem;
+		@include media(md) {
+			padding: 5.6rem;
+		}
+	}
 
-        @include media(md){
-            flex-basis: 50%;
-            max-width: 50%;
-            padding-left: 4rem;
-        }
-        @include media(lg){
-            flex-basis: 33.333%;
-            max-width: 33.333%;
-        }
+	&__info {
+		flex: 1 1 36rem;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 3.2rem;
+		padding: 3.2rem 2.4rem;
+		background-color: $primary-dark;
+		color: $white;
 
-        &-inner{}
-        &-info{
-            margin-bottom: 1.6rem;
+		@include media(md) {
+			padding: 5.6rem;
+		}
 
-            a{
-                display: inline-block;
-                width: 100%;
-                margin-bottom: .8rem;
-            }
-        }
-        &-socials{}
-    }
+		.b-contact__title {
+			color: $white;
+		}
+
+		a:not(.btn) {
+			color: $white;
+
+			&:hover {
+				color: $sand;
+			}
+
+			&:focus-visible {
+				outline-color: $white;
+			}
+		}
+
+		.c-socials {
+			margin-top: auto;
+			gap: .8rem;
+
+			.btn {
+				--bs-btn-padding-x: 0;
+				--bs-btn-padding-y: 0;
+				--bs-btn-font-size: 1.8rem;
+				--bs-btn-color: #{$white};
+				--bs-btn-border-color: #{rgba($white, .3)};
+				--bs-btn-border-width: 1px;
+				--bs-btn-hover-color: #{$primary};
+				--bs-btn-hover-bg: #{$white};
+				--bs-btn-hover-border-color: #{$white};
+				width: 4.8rem;
+				min-height: 4.8rem;
+			}
+		}
+	}
+
+	&__title {
+		margin: 0 0 2.8rem;
+		font-size: 3.2rem;
+
+		@include media(lg) {
+			font-size: 4rem;
+		}
+	}
+
+	&__info &__title {
+		margin-bottom: 0;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 2.8rem;
+	}
+
+	&__item {
+		display: flex;
+		gap: 1.6rem;
+		line-height: 1.6;
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			min-width: 0;
+			word-break: break-word;
+		}
+
+		address {
+			margin: 0;
+			font-style: normal;
+		}
+	}
+
+	&__icon {
+		width: 2.4rem;
+		height: 2.4rem;
+		margin-top: .2rem;
+		color: $sand;
+	}
+
+	&__label {
+		font-size: 1.2rem;
+		font-weight: $font-weight-bold;
+		letter-spacing: .14em;
+		text-transform: uppercase;
+		color: $sand;
+	}
+
+	&__placeholder {
+		padding: 2.4rem;
+		border: 1px dashed $border-color-strong;
+		color: $text-muted;
+	}
+
+	// ---------- Route ----------
+	&__route {
+		margin-top: 6.4rem;
+
+		@include media(lg) {
+			margin-top: 8rem;
+		}
+	}
+
+	&__map {
+		display: block;
+		margin-bottom: 2rem;
+		border: 1px solid $border-color;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			max-height: 48rem;
+			object-fit: cover;
+		}
+
+		&:hover {
+			border-color: $primary;
+		}
+	}
+
+	&__route-text {
+		max-width: 72rem;
+		margin: 0;
+		color: $text-body;
+	}
+}
+
+// Formulierkaart overlapt een voorafgaande paginakop
+.b-page-header:has(+ .b-contact) .c-page-header {
+	padding-bottom: 14.4rem;
+
+	@include media(lg) {
+		padding-bottom: 18.4rem;
+	}
+}
+
+.b-page-header:has(+ .b-contact) + .b-contact {
+	padding-top: 0;
+
+	.b-contact__panel {
+		margin-top: -9.6rem;
+
+		@include media(lg) {
+			margin-top: -12rem;
+		}
+	}
 }

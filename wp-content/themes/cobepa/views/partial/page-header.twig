@@ -1,10 +1,13 @@
 {#
 	Groene paginakop
-	Vars: title, intro, tag, breadcrumbs ([{title, link}], laatste = huidige pagina), class
+	Vars: title, intro, tag, image (Timber\Image), breadcrumbs ([{title, link}], laatste = huidige pagina), class
 	Block: after (via embed) voor tabs of key facts onderaan
 #}
-<section class="c-page-header{% if class %} {{ class }}{% endif %}">
-	<div class="container">
+<section class="c-page-header{% if image %} has-image{% endif %}{% if class %} {{ class }}{% endif %}">
+	{% if image %}
+		<img class="c-page-header__image" src="{{ image.src('img-xlarge') }}" srcset="{{ image.srcset }}" sizes="100vw" alt="" aria-hidden="true" width="{{ image.width }}" height="{{ image.height }}">
+	{% endif %}
+	<div class="container c-page-header__inner">
 		{% if breadcrumbs %}
 			<nav class="c-breadcrumbs" aria-label="{{ __('Kruimelpad', 'cobepa') }}">
 				<ol>

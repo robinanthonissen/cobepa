@@ -20,6 +20,26 @@
             "endpoint": 0
         },
         {
+            "key": "field_cbp_ed_overline",
+            "label": "Bovenregel",
+            "name": "overline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_63223b12f7cbd",
             "label": "Title",
             "name": "title",
@@ -93,8 +113,34 @@
             "endpoint": 0
         },
         {
+            "key": "field_cbp_ed_layout",
+            "label": "Layout",
+            "name": "layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "stacked": "Titel boven tekst",
+                "split": "Titel links, tekst rechts"
+            },
+            "default_value": "stacked",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_63223b3df7cbf",
-            "label": "Full Width",
+            "label": "Volledige breedte",
             "name": "full_width",
             "aria-label": "",
             "type": "true_false",
@@ -114,11 +160,11 @@
         },
         {
             "key": "field_63223b52f7cc0",
-            "label": "Small",
+            "label": "Smalle kolom",
             "name": "small",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Voor lange teksten (bv. privacybeleid).",
             "required": 0,
             "conditional_logic": [
                 [
@@ -141,6 +187,26 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_cbp_ed_border",
+            "label": "Lijn bovenaan",
+            "name": "border_top",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Groene lijn boven de titel, om een nieuwe sectie te starten.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6654eb284edfc",
             "label": "Background Color",
             "name": "background_color",
@@ -155,17 +221,12 @@
                 "id": ""
             },
             "choices": {
-                "bg-primary": "Primary",
-                "bg-secondary": "Secondary",
-                "bg-primary-faded": "Primary Faded",
-                "bg-secondary-faded": "Secondary Faded",
-                "bg-white": "White",
-                "bg-black": "Black",
-                "bg-dark": "Dark",
-                "bg-light": "Light",
-                "bg-transparent": "Transparent"
+                "bg-white": "Wit",
+                "bg-cream": "Crème",
+                "bg-sand-light": "Zand",
+                "bg-primary": "Groen"
             },
-            "default_value": "bg-transparent",
+            "default_value": "bg-cream",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -179,7 +240,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/editor"
+                "value": "acf/editor"
             }
         ]
     ],
@@ -192,5 +253,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683747509
+    "modified": 1794314921
 }

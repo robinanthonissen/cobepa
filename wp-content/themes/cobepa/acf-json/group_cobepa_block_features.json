@@ -214,6 +214,32 @@
             "endpoint": 0
         },
         {
+            "key": "field_cbp_ft_style",
+            "label": "Stijl",
+            "name": "style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "grid": "Raster met lijnen",
+                "tiles": "Losse tegels"
+            },
+            "default_value": "grid",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_cbp_ft_bg",
             "label": "Achtergrond",
             "name": "background_color",
@@ -230,7 +256,8 @@
             "choices": {
                 "bg-primary": "Groen",
                 "bg-white": "Wit",
-                "bg-cream": "Crème"
+                "bg-cream": "Crème",
+                "bg-sand-light": "Zand"
             },
             "default_value": "bg-primary",
             "return_format": "value",
@@ -259,5 +286,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1794310866
+    "modified": 1794314921
 }

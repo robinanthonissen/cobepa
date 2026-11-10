@@ -1,29 +1,107 @@
-.b-editor{
-    background-color: $white;
+// ----------------------------------------
+// Editor (tekst)
+// ----------------------------------------
+.b-editor {
+	padding: 6.4rem 0;
 
-    &__inner{
-        padding: 4rem 0 4.8rem;
-        @include media(md){
-            padding: 5.6rem 0 6.4rem;
-        }
-        @include media(lg){
-            padding: 6.4rem 0 7.2rem;
-        }
-        @include media(xl){
-            padding: 7.2rem 0 8rem;
-        }
+	@include media(lg) {
+		padding: 9.6rem 0;
+	}
 
-        .container{
+	// Opeenvolgende tekstblocks met dezelfde achtergrond: geen dubbele witruimte
+	&.bg-cream + &.bg-cream,
+	&.bg-white + &.bg-white,
+	&.bg-sand-light + &.bg-sand-light {
+		padding-top: 0;
+	}
 
-            &.small-container{
-                max-width: 76rem;
-            }
-        }
-        h2{
-            margin-bottom: 2.4rem;
-        }
-        p{
-            margin-bottom: 1.6rem;
-        }
-    }
+	&__inner.has-border {
+		padding-top: 4.8rem;
+		border-top: 3px solid $primary;
+
+		@include media(lg) {
+			padding-top: 5.6rem;
+		}
+	}
+
+	&__title {
+		margin: 0;
+	}
+
+	&__head {
+		margin-bottom: 2.4rem;
+
+		.overline {
+			margin-bottom: 1.2rem;
+		}
+	}
+
+	&__content {
+		font-size: 1.7rem;
+
+		@include media(lg) {
+			font-size: 1.8rem;
+		}
+	}
+
+	&__buttons {
+		margin-top: 3.2rem;
+	}
+
+	// Titel links, tekst rechts
+	&--split &__inner {
+		@include media(lg) {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+			gap: 6.4rem;
+			align-items: start;
+		}
+	}
+
+	&--split &__head {
+		@include media(lg) {
+			margin-bottom: 0;
+		}
+	}
+
+	&--split &__title {
+		color: $primary;
+	}
+
+	&--split.bg-primary &__title {
+		color: $white;
+	}
+
+	// Smalle kolom voor lange teksten
+	&--small &__inner {
+		max-width: 76rem;
+	}
+
+	&--small &__content {
+		font-size: 1.7rem;
+
+		h2 {
+			margin-top: 4.8rem;
+			margin-bottom: 1.6rem;
+			font-size: 2.8rem;
+
+			@include media(lg) {
+				font-size: 3.2rem;
+			}
+		}
+
+		h3 {
+			margin-top: 3.2rem;
+			margin-bottom: 1.2rem;
+			font-size: 2.2rem;
+		}
+
+		> :first-child {
+			margin-top: 0;
+		}
+	}
+
+	&.bg-primary &__content {
+		color: $text-on-primary;
+	}
 }

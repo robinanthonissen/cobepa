@@ -78,6 +78,42 @@
 		}
 	}
 
+	&--cols-3 &__grid {
+		@include media(lg) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	&--cols-2 &__grid,
+	&--cols-1 &__grid {
+		@include media(lg) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	// Losse groene tegels (bv. op crème achtergrond)
+	&--tiles &__grid {
+		gap: 2.4rem;
+		background-color: transparent !important;
+		border: 0 !important;
+	}
+
+	&--tiles &__item {
+		background-color: $primary !important;
+	}
+
+	&--tiles &__icon {
+		color: $sand;
+	}
+
+	&--tiles &__item-title {
+		color: $white;
+	}
+
+	&--tiles &__item-text {
+		color: $text-on-primary;
+	}
+
 	&__item {
 		display: flex;
 		flex-direction: column;
@@ -195,6 +231,112 @@
 	&.bg-primary &__text {
 		color: $text-on-primary;
 	}
+
+	&__number {
+		display: block;
+		margin-bottom: 1.2rem;
+		font-family: $font-heading;
+		font-synthesis: none;
+		font-size: 2rem;
+		line-height: 1;
+		color: $primary;
+	}
+
+	&__specs {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 2rem 3.2rem;
+		margin: 0 0 3.2rem;
+
+		dt {
+			font-size: 1.2rem;
+			font-weight: $font-weight-bold;
+			letter-spacing: .14em;
+			text-transform: uppercase;
+			color: #6F7B78;
+		}
+
+		dd {
+			margin: .4rem 0 0;
+			font-weight: $font-weight-semibold;
+			color: $text;
+		}
+	}
+
+	&__content > :last-child {
+		margin-bottom: 0;
+	}
+
+	&__placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 32rem;
+		padding: 2.4rem;
+		background-color: $sand-light;
+		border: 1px dashed $border-color-strong;
+		color: $text-muted;
+		text-align: center;
+	}
+
+	&--no-image &__content {
+		flex-basis: 100%;
+		max-width: 76rem;
+	}
+
+	// Kaart: witte box, foto en tekst tegen elkaar (voor een reeks, bv. infrastructuur)
+	&--card {
+		padding-top: 0;
+		padding-bottom: 3.2rem;
+
+		@include media(lg) {
+			padding-top: 0;
+			padding-bottom: 3.2rem;
+		}
+	}
+
+	&--card &__inner {
+		gap: 0;
+		align-items: stretch;
+		background-color: $white;
+		border: 1px solid $border-color;
+	}
+
+	&--card &__media {
+		flex: 1 1 48rem;
+	}
+
+	&--card &__image {
+		height: 100%;
+		min-height: 32rem;
+		aspect-ratio: auto;
+	}
+
+	&--card &__content {
+		align-self: center;
+		padding: 3.2rem 2.4rem;
+
+		@include media(md) {
+			padding: 5.6rem;
+		}
+	}
+
+	&--card &__title {
+		font-size: 3.6rem;
+
+		@include media(lg) {
+			font-size: 4.4rem;
+		}
+	}
+
+	&--card.b-image-text--no-image &__content {
+		max-width: none;
+	}
+
+	// Na een reeks kaarten: features-tegels sluiten aan
+	&--card + .b-features--tiles {
+		padding-top: 1.6rem;
+	}
 }
 
 // ----------------------------------------
@@ -249,5 +391,111 @@
 
 	&.bg-primary &__text {
 		color: $text-on-primary;
+	}
+
+	&__number {
+		display: block;
+		margin-bottom: 1.2rem;
+		font-family: $font-heading;
+		font-synthesis: none;
+		font-size: 2rem;
+		line-height: 1;
+		color: $primary;
+	}
+
+	&__specs {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 2rem 3.2rem;
+		margin: 0 0 3.2rem;
+
+		dt {
+			font-size: 1.2rem;
+			font-weight: $font-weight-bold;
+			letter-spacing: .14em;
+			text-transform: uppercase;
+			color: #6F7B78;
+		}
+
+		dd {
+			margin: .4rem 0 0;
+			font-weight: $font-weight-semibold;
+			color: $text;
+		}
+	}
+
+	&__content > :last-child {
+		margin-bottom: 0;
+	}
+
+	&__placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 32rem;
+		padding: 2.4rem;
+		background-color: $sand-light;
+		border: 1px dashed $border-color-strong;
+		color: $text-muted;
+		text-align: center;
+	}
+
+	&--no-image &__content {
+		flex-basis: 100%;
+		max-width: 76rem;
+	}
+
+	// Kaart: witte box, foto en tekst tegen elkaar (voor een reeks, bv. infrastructuur)
+	&--card {
+		padding-top: 0;
+		padding-bottom: 3.2rem;
+
+		@include media(lg) {
+			padding-top: 0;
+			padding-bottom: 3.2rem;
+		}
+	}
+
+	&--card &__inner {
+		gap: 0;
+		align-items: stretch;
+		background-color: $white;
+		border: 1px solid $border-color;
+	}
+
+	&--card &__media {
+		flex: 1 1 48rem;
+	}
+
+	&--card &__image {
+		height: 100%;
+		min-height: 32rem;
+		aspect-ratio: auto;
+	}
+
+	&--card &__content {
+		align-self: center;
+		padding: 3.2rem 2.4rem;
+
+		@include media(md) {
+			padding: 5.6rem;
+		}
+	}
+
+	&--card &__title {
+		font-size: 3.6rem;
+
+		@include media(lg) {
+			font-size: 4.4rem;
+		}
+	}
+
+	&--card.b-image-text--no-image &__content {
+		max-width: none;
+	}
+
+	// Na een reeks kaarten: features-tegels sluiten aan
+	&--card + .b-features--tiles {
+		padding-top: 1.6rem;
 	}
 }

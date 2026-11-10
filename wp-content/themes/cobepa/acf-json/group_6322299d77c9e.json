@@ -65,6 +65,26 @@
             "append": ""
         },
         {
+            "key": "field_cbp_it_number",
+            "label": "Nummer",
+            "name": "number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optioneel, klein boven de titel.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "bv. 01",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_632229b49c4d5",
             "label": "Title",
             "name": "title",
@@ -121,6 +141,72 @@
             "return_format": "array"
         },
         {
+            "key": "field_cbp_it_specs",
+            "label": "Kenmerken",
+            "name": "specs",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Bv. Afmetingen – 40 x 80 m",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Kenmerk toevoegen",
+            "min": 0,
+            "max": 8,
+            "collapsed": "",
+            "pagination": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cbp_it_spec_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_cbp_it_specs"
+                },
+                {
+                    "key": "field_cbp_it_spec_value",
+                    "label": "Waarde",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_cbp_it_specs"
+                }
+            ]
+        },
+        {
             "key": "field_645bf2c99187c",
             "label": "Settings",
             "name": "",
@@ -136,6 +222,32 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_cbp_it_style",
+            "label": "Stijl",
+            "name": "style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Standaard",
+                "card": "Kaart (witte box, voor reeksen)"
+            },
+            "default_value": "default",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_632229c99c4d8",
@@ -224,5 +336,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1794310866
+    "modified": 1794314921
 }

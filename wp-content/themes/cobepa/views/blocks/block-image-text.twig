@@ -1,37 +1,56 @@
 {#
 /**
  * Block Name: Image Text Block
- * Velden: image, overline, title, text, button, reverse, full_width, background_color
+ * Velden: image, overline, number, title, text, button, specs (label, value),
+ *         style (default|card), reverse, full_width, background_color
  */
 #}
 {% set image = fields.image ? Image(fields.image) : null %}
 {% set bg = fields.background_color ?: 'bg-white' %}
+{% set card = fields.style == 'card' %}
 
-<section id="{{ block.anchor ? block.anchor : 'block-image-text-' ~ block.id }}" class="b-image-text {{ bg }}{% if fields.reverse %} b-image-text--reverse{% endif %}{% if fields.full_width %} b-image-text--full{% endif %}">
-	<div class="{% if not fields.full_width %}container {% endif %}b-image-text__inner">
-		<div class="b-image-text__media">
+<section id="{{ block.anchor ? block.anchor : 'block-image-text-' ~ block.id }}" class="b-image-text {{ bg }}{% if card %} b-image-text--card{% endif %}{% if fields.reverse %} b-image-text--reverse{% endif %}{% if fields.full_width and not card %} b-image-text--full{% endif %}{% if not image %} b-image-text--no-image{% endif %}">
+	<div class="{% if not fields.full_width or card %}container{% endif %}">
+		<div class="b-image-text__inner">
 			{% if image %}
-				<img class="b-image-text__image lazy"
-					{% if not is_preview %}src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-{% endif %}src="{{ image.src('img-large') }}"
-					alt="{{ image.alt }}"
-					width="{{ image.width }}" height="{{ image.height }}">
-			{% endif %}
-		</div>
-		<div class="b-image-text__content">
-			{% if fields.overline %}
-				<p class="overline">{{ fields.overline }}</p>
-			{% endif %}
-			{% if fields.title %}
-				<h2 class="b-image-text__title">{{ fields.title }}</h2>
-			{% endif %}
-			{% if fields.text %}
-				<div class="content-wrapper b-image-text__text">{{ fields.text }}</div>
-			{% endif %}
-			{% if fields.button and fields.button.url %}
-				<div class="c-buttons">
-					<a class="btn {{ bg == 'bg-primary' ? 'btn-white' : 'btn-primary' }}" href="{{ fields.button.url }}" {% if fields.button.target %}target="{{ fields.button.target }}"{% endif %}>{{ fields.button.title }}</a>
+				<div class="b-image-text__media">
+					<img class="b-image-text__image lazy"
+						{% if not is_preview %}src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-{% endif %}src="{{ image.src('img-large') }}"
+						alt="{{ image.alt }}"
+						width="{{ image.width }}" height="{{ image.height }}">
 				</div>
+			{% elseif is_preview %}
+				<div class="b-image-text__media b-image-text__placeholder">{{ __('Kies een afbeelding in de zijbalk', 'cobepa') }}</div>
 			{% endif %}
+			<div class="b-image-text__content">
+				{% if fields.overline %}
+					<p class="overline">{{ fields.overline }}</p>
+				{% endif %}
+				{% if fields.number %}
+					<span class="b-image-text__number">{{ fields.number }}</span>
+				{% endif %}
+				{% if fields.title %}
+					<h2 class="b-image-text__title">{{ fields.title }}</h2>
+				{% endif %}
+				{% if fields.text %}
+					<div class="content-wrapper b-image-text__text">{{ fields.text }}</div>
+				{% endif %}
+				{% if fields.specs %}
+					<dl class="b-image-text__specs">
+						{% for spec in fields.specs %}
+							<div class="b-image-text__spec">
+								<dt>{{ spec.label }}</dt>
+								<dd>{{ spec.value }}</dd>
+							</div>
+						{% endfor %}
+					</dl>
+				{% endif %}
+				{% if fields.button and fields.button.url %}
+					<div class="c-buttons b-image-text__buttons">
+						<a class="btn {{ bg == 'bg-primary' and not card ? 'btn-white' : 'btn-primary' }}" href="{{ fields.button.url }}" {% if fields.button.target %}target="{{ fields.button.target }}"{% endif %}>{{ fields.button.title }}</a>
+					</div>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 </section>

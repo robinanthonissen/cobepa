@@ -1,42 +1,98 @@
 {#
 /**
  * Block Name: Contact Block
- *
+ * Velden: form_title, form (CF7-shortcode), info_title, route_title, route_text, map_image, show_socials
+ * Gegevens komen uit Website-instellingen (options).
  */
 #}
+{% set has_address = options.address or options.zip_code or options.city %}
+{% set maps_url = options.maps_url ?: 'https://www.google.com/maps/search/?api=1&query=' ~ (['Rijhal Kraaienhorst', options.address, options.zip_code, options.city]|join(' ')|url_encode) %}
+{% set map_image = fields.map_image ? Image(fields.map_image) : null %}
+{% set show_socials = fields.show_socials is null or fields.show_socials %}
+
 <section id="{{ block.anchor ? block.anchor : 'block-contact-' ~ block.id }}" class="b-contact">
-    <div class="container">
-        <div class="row">
-            <div class="b-contact__form">
-                <div class="b-contact__form-inner" data-aos="fade-up">
-                    <h3>{{ fields.form_title }}</h3>
-                    <div class="text-500 b-contact__form-form">{{ fields.form }}</div>
-                </div>
-            </div>
-            <div class="b-contact__info">
-                <div class="b-contact__info-inner" data-aos="fade-up">
-                    {% if fields.info_title %}
-                        <h3>{{ fields.info_title }}</h3>
-                    {% endif %}
-                    <div class="text-500 b-contact__info-info">
-                        {% if options.address or options.zip_code or options.city %}
-							<a href="#">{{ options.address }}<br>{{ options.zip_code }} - {{ options.city }}</a>
-						{% endif %}
-						{% if options.phone %}
-							<a href="callto:{{ options.phone }}">{{ options.phone }}</a>
-						{% endif %}
-						{% if options.email %}
-							<a href="mailto:{{ options.email }}">{{ options.email }}</a>
-						{% endif %}
-						{% if options.vat %}
-							<a href="#">{{ options.vat }}</a>
-						{% endif %}
-                    </div>
-                    <div class="b-contact__info-socials">
-                        {% include 'partial/socials.twig' %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="b-contact__panel">
+
+			<div class="b-contact__form">
+				<h2 class="b-contact__title">{{ fields.form_title ?: __('Stuur een bericht', 'cobepa') }}</h2>
+				{% if fields.form %}
+					<div class="b-contact__form-body">{{ fields.form }}</div>
+				{% elseif is_preview %}
+					<p class="b-contact__placeholder">{{ __('Plak de Contact Form 7-shortcode in het veld "Formulier".', 'cobepa') }}</p>
+				{% endif %}
+			</div>
+
+			<div class="b-contact__info">
+				<h2 class="b-contact__title">{{ fields.info_title ?: __('Gegevens', 'cobepa') }}</h2>
+				<ul class="b-contact__list">
+					{% if has_address %}
+						<li class="b-contact__item">
+							{% include 'partial/icon.twig' with { name: 'pin', class: 'b-contact__icon', stroke: 1.8 } %}
+							<div>
+								<span class="b-contact__label">{{ __('Adres', 'cobepa') }}</span>
+								<address>
+									Rijhal Kraaienhorst<br>
+									{% if options.address %}{{ options.address }}<br>{% endif %}
+									{{ options.zip_code }} {{ options.city }}
+								</address>
+							</div>
+						</li>
+					{% endif %}
+					{% if options.email %}
+						<li class="b-contact__item">
+							{% include 'partial/icon.twig' with { name: 'mail', class: 'b-contact__icon', stroke: 1.8 } %}
+							<div>
+								<span class="b-contact__label">{{ __('E-mail', 'cobepa') }}</span>
+								<a href="mailto:{{ options.email }}">{{ options.email }}</a>
+							</div>
+						</li>
+					{% endif %}
+					{% if options.phone %}
+						<li class="b-contact__item">
+							{% include 'partial/icon.twig' with { name: 'phone', class: 'b-contact__icon', stroke: 1.8 } %}
+							<div>
+								<span class="b-contact__label">{{ __('Telefoon', 'cobepa') }}</span>
+								<a href="tel:{{ options.phone|replace({' ': '', '.': '', '/': ''}) }}">{{ options.phone }}</a>
+							</div>
+						</li>
+					{% endif %}
+					{% if options.company_name or options.vat %}
+						<li class="b-contact__item">
+							{% include 'partial/icon.twig' with { name: 'document', class: 'b-contact__icon', stroke: 1.8 } %}
+							<div>
+								<span class="b-contact__label">{{ __('Vereniging', 'cobepa') }}</span>
+								{% if options.company_name %}<span>{{ options.company_name }}</span>{% endif %}
+								{% if options.vat %}<span>{{ __('Ondernemingsnr.', 'cobepa') }} {{ options.vat }}</span>{% endif %}
+							</div>
+						</li>
+					{% endif %}
+				</ul>
+				{% if show_socials %}
+					{% include 'partial/socials.twig' %}
+				{% endif %}
+			</div>
+
+		</div>
+
+		{% if has_address %}
+			<div class="b-contact__route">
+				<div class="c-section-head">
+					<h2 class="c-section-head__title">{{ fields.route_title ?: __('Route', 'cobepa') }}</h2>
+					<a class="c-link-arrow" href="{{ maps_url }}" target="_blank" rel="noopener">
+						{{ __('Open in Google Maps', 'cobepa') }}
+						{% include 'partial/icon.twig' with { name: 'arrow-up-right' } %}
+					</a>
+				</div>
+				{% if map_image %}
+					<a class="b-contact__map" href="{{ maps_url }}" target="_blank" rel="noopener" aria-label="{{ __('Open de locatie in Google Maps', 'cobepa') }}">
+						<img class="lazy" {% if not is_preview %}src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-{% endif %}src="{{ map_image.src('img-xlarge') }}" alt="{{ map_image.alt ?: __('Kaart met de ligging van Rijhal Kraaienhorst', 'cobepa') }}" width="{{ map_image.width }}" height="{{ map_image.height }}">
+					</a>
+				{% endif %}
+				{% if fields.route_text %}
+					<p class="b-contact__route-text">{{ fields.route_text|nl2br }}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+	</div>
 </section>

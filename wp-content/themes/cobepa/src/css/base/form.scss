@@ -1,40 +1,190 @@
+// ----------------------------------------
+// Formuliervelden
+// ----------------------------------------
 input[type="text"],
 input[type="tel"],
 input[type="email"],
 input[type="number"],
 input[type="password"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+select,
 textarea {
-  height: 5rem;
-  background: white;
-  border: 2px solid var(--color-grey);
-  border-radius: var(--border-radius-small);
-  padding-left: 2rem;
-  padding-right: 2rem;
-  color: var(--color-black);
-  font-size: 1.6rem;
-  font-family: inherit;
-  outline: none;
   width: 100%;
+  min-height: 5.2rem;
+  padding: 1.2rem 1.6rem;
+  background-color: $cream;
+  border: 1px solid $border-color-strong;
+  border-radius: $border-radius;
+  color: $text;
+  font-family: $font-normal;
+  font-size: 1.6rem;
+  line-height: 1.5;
   -webkit-appearance: none;
-  transition: border-color .3s ease;
+  appearance: none;
+  transition: border-color .2s ease, background-color .2s ease;
+
+  &::placeholder {
+    color: #7A8784;
+  }
+
+  &:hover {
+    border-color: $text-muted;
+  }
+
   &:focus {
-    border-color: var(--color-black);
+    outline: 2px solid $primary;
+    outline-offset: 1px;
+    border-color: $primary;
+    background-color: $white;
   }
 }
 
-textarea {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  min-height: 10rem;
+select {
+  padding-right: 4.4rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004C45' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.4rem center;
+  background-size: 2rem;
+  cursor: pointer;
 }
 
-abbr.required {
-  color: red;
-  font-size: 1.4rem;
+textarea {
+  min-height: 16rem;
+  resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  flex: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin: .1rem 0 0;
+  accent-color: $primary;
+  cursor: pointer;
 }
 
 label {
-  font-size: 1.4rem;
-  margin-bottom: .5rem;
   display: block;
+  margin-bottom: .8rem;
+  font-size: 1.4rem;
+  font-weight: $font-weight-semibold;
+  color: $text;
+}
+
+abbr.required {
+  color: $status-full;
+  text-decoration: none;
+}
+
+// ----------------------------------------
+// Formulierlayout (CF7-template: docs/contact-form-7.txt)
+// ----------------------------------------
+.c-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.2rem;
+
+    @include media(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: .8rem;
+    }
+  }
+
+  &__check {
+    font-size: 1.5rem;
+    color: $text-body;
+
+    label,
+    .wpcf7-list-item-label {
+      display: inline;
+      margin: 0;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: $text-body;
+    }
+
+    .wpcf7-list-item,
+    label {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+  }
+
+  input[type="submit"].btn {
+    min-width: 16rem;
+    cursor: pointer;
+  }
+}
+
+// ----------------------------------------
+// Contact Form 7: wrappers, validatie en meldingen
+// ----------------------------------------
+.wpcf7 {
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+
+  .wpcf7-not-valid {
+    border-color: $status-full !important;
+  }
+
+  .wpcf7-not-valid-tip {
+    margin-top: .6rem;
+    font-size: 1.4rem;
+    font-weight: $font-weight-semibold;
+    color: $status-full;
+  }
+
+  .wpcf7-spinner {
+    margin: 0;
+  }
+
+  form .wpcf7-response-output {
+    margin: 2.4rem 0 0;
+    padding: 1.6rem 2rem;
+    border: 0;
+    border-left: 4px solid $primary;
+    background-color: $primary-light;
+    color: $text;
+    font-size: 1.5rem;
+  }
+
+  form.invalid .wpcf7-response-output,
+  form.unaccepted .wpcf7-response-output,
+  form.failed .wpcf7-response-output,
+  form.aborted .wpcf7-response-output,
+  form.spam .wpcf7-response-output {
+    border-left-color: $status-full;
+    background-color: $status-full-bg;
+  }
+
+  form.sent .wpcf7-response-output {
+    border-left-color: $primary;
+    background-color: $primary-light;
+  }
 }

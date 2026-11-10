@@ -1,0 +1,30 @@
+<div class="c-form">
+	<div class="c-form__grid">
+		<div class="c-form__field">
+			<label for="cf-name">Naam *</label>
+			[text* your-name id:cf-name autocomplete:name]
+		</div>
+		<div class="c-form__field">
+			<label for="cf-email">E-mail *</label>
+			[email* your-email id:cf-email autocomplete:email]
+		</div>
+		<div class="c-form__field">
+			<label for="cf-phone">Telefoon</label>
+			[tel your-phone id:cf-phone autocomplete:tel]
+		</div>
+		<div class="c-form__field">
+			<label for="cf-subject">Onderwerp</label>
+			[select your-subject id:cf-subject "Algemene vraag" "Vraag over een evenement" "Infrastructuur" "Andere"]
+		</div>
+	</div>
+	<div class="c-form__field">
+		<label for="cf-message">Bericht *</label>
+		[textarea* your-message id:cf-message x6]
+	</div>
+	<div class="c-form__check">
+		[acceptance privacy] Ik ga akkoord met het <a href="/privacybeleid/" target="_blank">privacybeleid</a>. [/acceptance]
+	</div>
+	<div class="c-form__submit">
+		[submit class:btn class:btn-primary "Verzenden"]
+	</div>
+</div>

@@ -49,6 +49,23 @@ function my_acf_init() {
 		'keywords'        => array( 'hero', 'header' ),
 	));
 
+	// Paginakop (subpagina's)
+	acf_register_block( array(
+		'name'            => 'page-header',
+		'title'           => __( 'Paginakop', 'cobepa' ),
+		'description'     => __( 'Groene paginakop met titel, intro en kruimelpad', 'cobepa' ),
+		'render_callback' => 'block_render_callback',
+		'category'        => 'rawd-blocks',
+		'icon'            => 'heading',
+		'mode'            => 'preview',
+		'supports'        => array(
+			'align'    => false,
+			'anchor'   => true,
+			'multiple' => false,
+		),
+		'keywords'        => array( 'header', 'paginakop', 'titel' ),
+	));
+
 	// Aankomende evenementen
 	acf_register_block( array(
 		'name'            => 'events',
@@ -181,10 +198,10 @@ function my_acf_init() {
 
 }  
 
-function block_render_callback( $block, $content = '', $is_preview = false ) {
-	//$parent = Timber::query_post(get_queried_object_id());
+function block_render_callback( $block, $content = '', $is_preview = false, $post_id = 0 ) {
 	$context = Timber::context();
-	$context['post'] = new Timber\Post();
+	// In de editor-preview is er geen globale post: gebruik de post die ACF doorgeeft
+	$context['post'] = $post_id ? new Timber\Post( $post_id ) : new Timber\Post();
 	$context['block'] = $block;
 	$context['fields'] = get_fields();
 	//$content['parent'] = $parent;

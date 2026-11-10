@@ -1,11 +1,13 @@
 {#
 /**
  * Block Name: Features Block
- * Velden: overline, title, text, items (icon, title, text), button, background_color
+ * Velden: overline, title, text, items (icon, title, text), button, style (grid|tiles), background_color
  */
 #}
 {% set bg = fields.background_color ?: 'bg-primary' %}
-<section id="{{ block.anchor ? block.anchor : 'block-features-' ~ block.id }}" class="b-features {{ bg }}">
+{% set style = fields.style ?: 'grid' %}
+{% set count = fields.items ? fields.items|length : 0 %}
+<section id="{{ block.anchor ? block.anchor : 'block-features-' ~ block.id }}" class="b-features {{ bg }} b-features--{{ style }} b-features--cols-{{ count >= 4 ? 4 : count }}">
 	<div class="container">
 		{% if fields.overline or fields.title or fields.text %}
 			<div class="b-features__head">

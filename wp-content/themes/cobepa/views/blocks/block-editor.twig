@@ -1,23 +1,36 @@
 {#
 /**
  * Block Name: Editor Block
- *
+ * Velden: overline, title, content, button, layout (stacked|split), full_width, small, border_top, background_color
  */
 #}
-<section id="{{ block.anchor ? block.anchor : 'block-editor-' ~ block.id }}" class="b-editor">
-    
-    <div class="b-editor__inner {{ fields.background_color }}" data-aos="fade-up">
-        <div class="{% if not fields.full_width %}container{% endif %} {% if fields.small %}small-container{% endif %}">
-            {% if fields.title %}
-                <h2>{{ fields.title }}</h2>
-            {% endif %}
-            {% if fields.content %}
-                <div class="text-500">{{ fields.content }}</div>
-            {% endif %}
-            {% if fields.button %}
-                <a href="{{ fields.button.url }}" class="btn btn-primary lg">{{ fields.button.title }}</a>
-            {% endif %}
-        </div>
-    </div>
-
+{% set bg = fields.background_color ?: 'bg-cream' %}
+{% set split = fields.layout == 'split' %}
+<section id="{{ block.anchor ? block.anchor : 'block-editor-' ~ block.id }}" class="b-editor {{ bg }}{% if split %} b-editor--split{% endif %}{% if fields.small %} b-editor--small{% endif %}">
+	<div class="{% if not fields.full_width %}container{% else %}container-fluid{% endif %}">
+		<div class="b-editor__inner{% if fields.border_top %} has-border{% endif %}">
+			{% if fields.overline or fields.title %}
+				<div class="b-editor__head">
+					{% if fields.overline %}
+						<p class="overline">{{ fields.overline }}</p>
+					{% endif %}
+					{% if fields.title %}
+						<h2 class="b-editor__title">{{ fields.title }}</h2>
+					{% endif %}
+				</div>
+			{% endif %}
+			{% if fields.content or (fields.button and fields.button.url) %}
+				<div class="b-editor__body">
+					{% if fields.content %}
+						<div class="content-wrapper b-editor__content">{{ fields.content }}</div>
+					{% endif %}
+					{% if fields.button and fields.button.url %}
+						<div class="c-buttons b-editor__buttons">
+							<a class="btn {{ bg == 'bg-primary' ? 'btn-white' : 'btn-primary' }}" href="{{ fields.button.url }}" {% if fields.button.target %}target="{{ fields.button.target }}"{% endif %}>{{ fields.button.title }}</a>
+						</div>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
 </section>
