@@ -49,23 +49,6 @@ function my_acf_init() {
 		'keywords'        => array( 'hero', 'header' ),
 	));
 
-	// Paginakop (subpagina's)
-	acf_register_block( array(
-		'name'            => 'page-header',
-		'title'           => __( 'Paginakop', 'cobepa' ),
-		'description'     => __( 'Groene paginakop met titel, intro en kruimelpad', 'cobepa' ),
-		'render_callback' => 'block_render_callback',
-		'category'        => 'rawd-blocks',
-		'icon'            => 'heading',
-		'mode'            => 'preview',
-		'supports'        => array(
-			'align'    => false,
-			'anchor'   => true,
-			'multiple' => false,
-		),
-		'keywords'        => array( 'header', 'paginakop', 'titel' ),
-	));
-
 	// Aankomende evenementen
 	acf_register_block( array(
 		'name'            => 'events',

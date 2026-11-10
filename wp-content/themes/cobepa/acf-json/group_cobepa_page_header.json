@@ -1,11 +1,11 @@
 {
-    "key": "group_cobepa_block_page_header",
-    "title": "Block - Paginakop",
+    "key": "group_cobepa_page_header",
+    "title": "Paginakop",
     "fields": [
         {
-            "key": "field_cbp_ph_title",
+            "key": "field_cbp_pg_title",
             "label": "Titel",
-            "name": "title",
+            "name": "header_title",
             "aria-label": "",
             "type": "text",
             "instructions": "Leeg = titel van de pagina.",
@@ -23,9 +23,9 @@
             "append": ""
         },
         {
-            "key": "field_cbp_ph_intro",
+            "key": "field_cbp_pg_intro",
             "label": "Intro",
-            "name": "intro",
+            "name": "header_intro",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",
@@ -43,16 +43,16 @@
             "new_lines": ""
         },
         {
-            "key": "field_cbp_ph_image",
+            "key": "field_cbp_pg_image",
             "label": "Achtergrondfoto",
-            "name": "image",
+            "name": "header_image",
             "aria-label": "",
             "type": "image",
             "instructions": "Optioneel: wordt licht getoond achter het groen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -68,16 +68,16 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_cbp_ph_crumbs",
+            "key": "field_cbp_pg_crumbs",
             "label": "Kruimelpad tonen",
-            "name": "breadcrumbs",
+            "name": "header_breadcrumbs",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -91,14 +91,14 @@
     "location": [
         [
             {
-                "param": "block",
+                "param": "page_template",
                 "operator": "==",
-                "value": "acf/page-header"
+                "value": "templates/tpl-page-header.php"
             }
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -106,5 +106,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1794314921
+    "modified": 1794315956
 }

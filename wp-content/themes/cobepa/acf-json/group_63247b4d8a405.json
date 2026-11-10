@@ -41,11 +41,11 @@
         },
         {
             "key": "field_63247b72b1f03",
-            "label": "Formulier",
+            "label": "Formulier (shortcode)",
             "name": "form",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Plak hier de Contact Form 7-shortcode, bv. [contact-form-7 id=\"…\" title=\"Contact\"].",
+            "instructions": "Plak hier de shortcode van het formulier (Contact Form 7, Gravity Forms, WPForms…). Tekst rond het formulier kan ook.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -56,7 +56,7 @@
             "default_value": "",
             "tabs": "all",
             "toolbar": "basic",
-            "media_upload": false,
+            "media_upload": 0,
             "delay": 0
         },
         {
@@ -217,5 +217,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1794314921
+    "modified": 1794315956
 }

@@ -170,8 +170,8 @@
 	}
 }
 
-// Formulierkaart overlapt een voorafgaande paginakop
-.b-page-header:has(+ .b-contact) .c-page-header {
+// Formulierkaart overlapt de paginakop (template "Page with header" met contact-block als eerste block)
+.c-page-header--overlap {
 	padding-bottom: 14.4rem;
 
 	@include media(lg) {
@@ -179,7 +179,7 @@
 	}
 }
 
-.b-page-header:has(+ .b-contact) + .b-contact {
+.c-page-header--overlap + .page-blocks > .b-contact:first-child {
 	padding-top: 0;
 
 	.b-contact__panel {

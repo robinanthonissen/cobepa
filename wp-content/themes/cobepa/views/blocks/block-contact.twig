@@ -1,7 +1,7 @@
 {#
 /**
  * Block Name: Contact Block
- * Velden: form_title, form (CF7-shortcode), info_title, route_title, route_text, map_image, show_socials
+ * Velden: form_title, form (WYSIWYG met formulier-shortcode), info_title, route_title, route_text, map_image, show_socials
  * Gegevens komen uit Website-instellingen (options).
  */
 #}
@@ -19,7 +19,7 @@
 				{% if fields.form %}
 					<div class="b-contact__form-body">{{ fields.form }}</div>
 				{% elseif is_preview %}
-					<p class="b-contact__placeholder">{{ __('Plak de Contact Form 7-shortcode in het veld "Formulier".', 'cobepa') }}</p>
+					<p class="b-contact__placeholder">{{ __('Plak de shortcode van het formulier in het veld "Formulier (shortcode)".', 'cobepa') }}</p>
 				{% endif %}
 			</div>
 
