@@ -1,57 +1,56 @@
-<div class="c-menu">
-	{#<div class="c-menu__image" style="background-image: url('{{ Image(options.menu_image).src }}');">#}
-	<div class="c-menu__image lazy" data-src="{{ Image(options.menu_image).src }}">
-	</div>
+<div class="c-menu" id="c-menu" aria-hidden="true">
+	<div class="c-menu__inner" role="dialog" aria-modal="true" aria-label="{{ __('Menu', 'cobepa') }}">
 
-	<div class="c-menu__inner">
-		<button class="c-menu__close js-c-menu-button">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-				<path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
-			</svg>
-		</button>
-		<div class="container">
+		<div class="c-menu__top">
+			<div class="container c-menu__top-inner">
+				<a href="{{ site.link }}" class="c-menu__brand" tabindex="-1">
+					<span class="c-menu__brand-name">{{ options.brand_name ?: site.title }}</span>
+					{% if site.description %}
+						<span class="c-menu__brand-tagline">{{ site.description }}</span>
+					{% endif %}
+				</a>
+				<button class="c-menu__close js-c-menu-button" type="button" aria-label="{{ __('Menu sluiten', 'cobepa') }}" tabindex="-1">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+				</button>
+			</div>
+		</div>
+
+		<div class="container c-menu__body">
 			{% if main.items %}
-				<nav class="c-menu__nav">
+				<nav class="c-menu__nav" aria-label="{{ __('Hoofdmenu', 'cobepa') }}">
 					<ul>
-					{% for item in main.items %}
-						<li class="{{ item.classes | join(' ') }}">
-							<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-							{#% include "menu.twig" with {'items': item.children} %#}
-						</li>
-					{% endfor %}
+						{% for item in main.items %}
+							{% set is_active = item.current or item.current_item_parent or item.current_item_ancestor %}
+							<li class="{{ item.classes|join(' ') }}">
+								<a href="{{ item.link }}" class="c-menu__link{% if is_active %} is-active{% endif %}" {% if item.current %}aria-current="page"{% endif %} {% if item.target %}target="{{ item.target }}"{% endif %} tabindex="-1">{{ item.title }}</a>
+								{% if item.children %}
+									<ul class="c-menu__sub">
+										{% for child in item.children %}
+											<li><a href="{{ child.link }}" class="c-menu__sub-link" tabindex="-1">{{ child.title }}</a></li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% endfor %}
 					</ul>
 				</nav>
 			{% endif %}
+
+			{% if options.header_button and options.header_button.url %}
+				<a class="btn btn-white btn-lg c-menu__cta" href="{{ options.header_button.url }}" tabindex="-1">{{ options.header_button.title }}</a>
+			{% endif %}
+
+			{% if options.phone or options.email %}
+				<div class="c-menu__contact">
+					{% if options.phone %}
+						<a href="tel:{{ options.phone|replace({' ': '', '.': '', '/': ''}) }}" tabindex="-1">{{ options.phone }}</a>
+					{% endif %}
+					{% if options.email %}
+						<a href="mailto:{{ options.email }}" tabindex="-1">{{ options.email }}</a>
+					{% endif %}
+				</div>
+			{% endif %}
 		</div>
+
 	</div>
 </div>
-
-{#<div class="c-menu">
-	<div class="c-menu__inner">
-		<div class="c-menu__header">
-			<a href="{{ site.link }}" class="c-menu__logo">
-                <img class="logo" src="{{ theme.link }}/src/img/logo-anke-menu.svg">
-            </a>
-			<button class="c-menu__close js-c-menu-button">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-					<path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
-				</svg>
-			</button>
-		</div>
-
-		<div class="container">
-			{% if items %}
-				<nav class="c-menu__nav">
-					<ul>
-					{% for item in items %}
-						<li class="{{ item.classes | join(' ') }}">
-							<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-							{#% include "menu.twig" with {'items': item.children} %#}
-						{#</li>
-					{% endfor %}
-					</ul>
-				</nav>
-			{% endif %}
-		</div>
-	</div>
-</div>#}

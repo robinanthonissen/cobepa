@@ -8,6 +8,12 @@ $theme-colors: (
   "danger":          $danger,
   "light":           $light,
   "dark":            $dark,
+  "primary-dark":    $primary-dark,
+  "primary-light":   $primary-light,
+  "sand":            $sand,
+  "sand-light":      $sand-light,
+  "cream":           $cream,
+  "white":           $white,
   "primary-faded":   $primary-faded,
   "secondary-faded": $secondary-faded
 );
@@ -252,6 +258,6 @@ $container-max-widths: (
     sm: 540px,
     md: 720px,
     lg: 960px,
-    xl: 1170px,
-    xxl: 1280px
+    xl: 1200px,
+    xxl: 1304px
 );

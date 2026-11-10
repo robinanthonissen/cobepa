@@ -1,50 +1,212 @@
-a:not(.btn){
+// ----------------------------------------
+// Links
+// ----------------------------------------
+a:not(.btn) {
 	cursor: pointer;
-	transition: all .2s ease;
 	color: $primary;
-	&:hover{
-		text-decoration: none;
-		opacity: .85;
+	text-underline-offset: .2em;
+	transition: color .2s ease;
+
+	&:hover {
+		color: $primary-dark;
 	}
 }
 
-.btn{
-	transition: all .3s ease;
-	font-weight: 500;
-	&.btn-primary{
-		--bs-btn-color: var(--bs-white);
-		--bs-btn-hover-color: var(--bs-white);
-	}
-	&.btn-secondary{
-		--bs-btn-color: var(--bs-white);
-		--bs-btn-hover-color: var(--bs-white);
-	}
-	&.btn-light{}
-	&.btn-dark{}
-	&.btn-white{}
-	&.btn-black{}
+// Tekstlink met pijl: <a class="c-link-arrow">Alle evenementen <svg>…</svg></a>
+.c-link-arrow {
+	display: inline-flex;
+	align-items: center;
+	gap: .8rem;
+	min-height: 4.4rem;
+	font-weight: $font-weight-semibold;
+	text-decoration: none !important;
 
-	&.btn-link{}
-
-	&.btn-outline-primary{}
-	&.btn-outline-secondary{}
-	&.btn-outline-light{}
-	&.btn-outline-dark{}
-	&.btn-outline-white{}
-	&.btn-outline-black{}
-
-	&:hover{
-		text-decoration: none;
+	svg,
+	i {
+		width: 1.8rem;
+		height: 1.8rem;
+		transition: transform .2s ease;
 	}
-	
-	&.btn-md{
-		--bs-btn-padding-y: .8rem;
-		--bs-btn-padding-x: 2rem;
+
+	&:hover svg,
+	&:hover i {
+		transform: translateX(.4rem);
+	}
+}
+
+// ----------------------------------------
+// Buttons
+// ----------------------------------------
+.btn {
+	--bs-btn-padding-x: 2.4rem;
+	--bs-btn-padding-y: 1rem;
+	--bs-btn-font-family: #{$font-normal};
+	--bs-btn-font-size: 1.6rem;
+	--bs-btn-font-weight: #{$font-weight-semibold};
+	--bs-btn-line-height: 1.5;
+	--bs-btn-border-width: 2px;
+	--bs-btn-border-radius: #{$border-radius};
+	--bs-btn-focus-box-shadow: 0 0 0 .3rem #{rgba($primary, .35)};
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	min-height: 4.8rem;
+	text-align: center;
+	text-decoration: none !important;
+	white-space: nowrap;
+	transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+
+	svg,
+	i,
+	.btn__icon {
+		flex: none;
+		width: 1.8rem;
+		height: 1.8rem;
+		transition: transform .2s ease;
+	}
+
+	&:hover .btn__icon {
+		transform: translateX(.3rem);
+	}
+
+	&:focus-visible {
+		outline: 3px solid $primary;
+		outline-offset: 2px;
+		box-shadow: none;
+	}
+
+	// Primair – groen
+	&.btn-primary {
+		--bs-btn-color: #{$white};
+		--bs-btn-bg: #{$primary};
+		--bs-btn-border-color: #{$primary};
+		--bs-btn-hover-color: #{$white};
+		--bs-btn-hover-bg: #{$primary-dark};
+		--bs-btn-hover-border-color: #{$primary-dark};
+		--bs-btn-active-color: #{$white};
+		--bs-btn-active-bg: #{$primary-dark};
+		--bs-btn-active-border-color: #{$primary-dark};
+		--bs-btn-disabled-color: #{$white};
+		--bs-btn-disabled-bg: #{$primary};
+		--bs-btn-disabled-border-color: #{$primary};
+	}
+
+	// Secundair – zand
+	&.btn-secondary {
+		--bs-btn-color: #{$primary};
+		--bs-btn-bg: #{$sand};
+		--bs-btn-border-color: #{$sand};
+		--bs-btn-hover-color: #{$primary};
+		--bs-btn-hover-bg: #{darken($sand, 6%)};
+		--bs-btn-hover-border-color: #{darken($sand, 6%)};
+		--bs-btn-active-color: #{$primary};
+		--bs-btn-active-bg: #{darken($sand, 8%)};
+		--bs-btn-active-border-color: #{darken($sand, 8%)};
+	}
+
+	// Wit – op groene of foto-achtergrond
+	&.btn-white {
+		--bs-btn-color: #{$primary};
+		--bs-btn-bg: #{$white};
+		--bs-btn-border-color: #{$white};
+		--bs-btn-hover-color: #{$primary};
+		--bs-btn-hover-bg: #{$sand-light};
+		--bs-btn-hover-border-color: #{$sand-light};
+		--bs-btn-active-color: #{$primary};
+		--bs-btn-active-bg: #{$sand};
+		--bs-btn-active-border-color: #{$sand};
+
+		&:focus-visible {
+			outline-color: $white;
+		}
+	}
+
+	// Outline – groen
+	&.btn-outline-primary {
+		--bs-btn-color: #{$primary};
+		--bs-btn-bg: transparent;
+		--bs-btn-border-color: #{$primary};
+		--bs-btn-hover-color: #{$white};
+		--bs-btn-hover-bg: #{$primary};
+		--bs-btn-hover-border-color: #{$primary};
+		--bs-btn-active-color: #{$white};
+		--bs-btn-active-bg: #{$primary-dark};
+		--bs-btn-active-border-color: #{$primary-dark};
+	}
+
+	// Outline – wit (op groen / foto)
+	&.btn-outline-white {
+		--bs-btn-color: #{$white};
+		--bs-btn-bg: transparent;
+		--bs-btn-border-color: #{$white};
+		--bs-btn-hover-color: #{$primary};
+		--bs-btn-hover-bg: #{$white};
+		--bs-btn-hover-border-color: #{$white};
+		--bs-btn-active-color: #{$primary};
+		--bs-btn-active-bg: #{$sand-light};
+		--bs-btn-active-border-color: #{$sand-light};
+
+		&:focus-visible {
+			outline-color: $white;
+		}
+	}
+
+	// Lichte outline – neutraal (bv. "Toevoegen aan agenda")
+	&.btn-light {
+		--bs-btn-color: #{$text};
+		--bs-btn-bg: #{$white};
+		--bs-btn-border-color: #{$border-color-strong};
+		--bs-btn-hover-color: #{$primary};
+		--bs-btn-hover-bg: #{$white};
+		--bs-btn-hover-border-color: #{$primary};
+		--bs-btn-active-color: #{$primary};
+		--bs-btn-active-bg: #{$primary-light};
+		--bs-btn-active-border-color: #{$primary};
+		--bs-btn-border-width: 1px;
+	}
+
+	// Link-stijl
+	&.btn-link {
+		--bs-btn-color: #{$primary};
+		--bs-btn-hover-color: #{$primary-dark};
+		--bs-btn-active-color: #{$primary-dark};
+		--bs-btn-padding-x: 0;
+		--bs-btn-border-width: 0;
+		min-height: 4.4rem;
+	}
+
+	// Sizes ('lg' blijft ondersteund voor bestaande templates)
+	&.btn-sm {
+		--bs-btn-padding-x: 1.6rem;
+		--bs-btn-padding-y: .6rem;
+		--bs-btn-font-size: 1.4rem;
+		min-height: 4.4rem; // touch target
+	}
+	&.btn-md {
+		--bs-btn-padding-x: 2.4rem;
+		--bs-btn-padding-y: 1rem;
 		--bs-btn-font-size: 1.6rem;
 	}
-	&.btn-lg{
-		--bs-btn-padding-y: 1.2rem;
+	&.btn-lg,
+	&.lg {
 		--bs-btn-padding-x: 3.2rem;
-		--bs-btn-font-size: 1.8rem;
+		--bs-btn-padding-y: 1.2rem;
+		--bs-btn-font-size: 1.7rem;
+		min-height: 5.6rem;
 	}
+
+	&.btn-block {
+		display: flex;
+		width: 100%;
+	}
+}
+
+// Groep knoppen naast elkaar
+.button-container,
+.c-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.6rem;
 }

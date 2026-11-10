@@ -1,104 +1,97 @@
+{% set footer_menus = [footer_col_1, footer_col_2, footer_col_3] %}
+{% set has_address = options.address or options.zip_code or options.city %}
+{% set maps_url = options.maps_url ?: 'https://www.google.com/maps/search/?api=1&query=' ~ ([options.address, options.zip_code, options.city]|join(' ')|url_encode) %}
+
 <footer class="l-footer">
-<div class="c-footer" id="footer">
-	<div class="c-footer__nav py-30 py-md-50">
+	<div class="u-pole" aria-hidden="true"></div>
+
+	<div class="l-footer__main">
 		<div class="container">
-			<div class="row">
-				{#<div class="col-3">
-					<div class="c-footer__logo">
-						<img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== data-src="{{theme.link}}/src/img/logo_parkhappening_wit.png" alt="logo" class="lazy">
-					</div>
-				</div>#}
-				<div class="col-12 col-lg-5" data-aos="fade-up">
-					<h3 class="text-primary-faded">{{ site.title }}</h3>
-					<div class="c-footer__text mt-24 mb-20">
-						{% if options.address or options.zip_code or options.city %}
-							<a href="#">{{ options.address }}<br>{{ options.zip_code }} - {{ options.city }}</a>
+			<div class="l-footer__grid">
+
+				<div class="l-footer__col l-footer__col--brand">
+					<a href="{{ site.link }}" class="l-footer__brand">
+						<span class="l-footer__brand-name">{{ options.brand_name ?: site.title }}</span>
+						{% if site.description %}
+							<span class="l-footer__brand-tagline">{{ site.description }}</span>
 						{% endif %}
-						{% if options.phone %}
-							<a href="callto:{{ options.phone }}">{{ options.phone }}</a>
-						{% endif %}
-						{% if options.email %}
-							<a href="mailto:{{ options.email }}">{{ options.email }}</a>
-						{% endif %}
-						{% if options.vat %}
-							<a href="#">{{ options.vat }}</a>
-						{% endif %}
-					</div>
+					</a>
+					{% if options.footer_text %}
+						<p class="l-footer__text">{{ options.footer_text|nl2br }}</p>
+					{% endif %}
 					{% include 'partial/socials.twig' %}
 				</div>
-				{% if footer_col_1.items %}
-					<div class="col-6 col-md-4 col-lg-2 mr-lg-0 ml-lg-auto" data-aos="fade-up">
-						<nav>
-							<ul class="c-footer__nav-list my-10 my-lg-30">
-								{% for item in footer_col_1.items %}
-									<li class="c-footer__nav-list-item {{ item.classes|join(' ') }}">
-										<a href="{{ item.link }}" class="c-footer__link text-small">{{ item.title }}</a>
+
+				{% if has_address %}
+					<div class="l-footer__col">
+						<h2 class="l-footer__title">{{ __('Adres', 'cobepa') }}</h2>
+						<address class="l-footer__address">
+							{% if options.address %}{{ options.address }}<br>{% endif %}
+							{{ options.zip_code }} {{ options.city }}
+						</address>
+						<a class="c-link-arrow l-footer__route" href="{{ maps_url }}" target="_blank" rel="noopener">
+							{{ __('Route plannen', 'cobepa') }}
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+						</a>
+					</div>
+				{% endif %}
+
+				{% if options.phone or options.email %}
+					<div class="l-footer__col">
+						<h2 class="l-footer__title">{{ __('Contact', 'cobepa') }}</h2>
+						<ul class="l-footer__list">
+							{% if options.email %}
+								<li><a href="mailto:{{ options.email }}">{{ options.email }}</a></li>
+							{% endif %}
+							{% if options.phone %}
+								<li><a href="tel:{{ options.phone|replace({' ': '', '.': '', '/': ''}) }}">{{ options.phone }}</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				{% endif %}
+
+				{% for menu in footer_menus %}
+					{% if menu.items %}
+						<nav class="l-footer__col" aria-label="{{ menu.title }}">
+							<h2 class="l-footer__title">{{ menu.title }}</h2>
+							<ul class="l-footer__list">
+								{% for item in menu.items %}
+									<li class="{{ item.classes|join(' ') }}">
+										<a href="{{ item.link }}" {% if item.current %}aria-current="page"{% endif %} {% if item.target %}target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
 									</li>
 								{% endfor %}
 							</ul>
 						</nav>
-					</div>
-				{% endif %}
-				{% if footer_col_2.items %}
-					<div class="col-6 col-md-4 col-lg-2 mr-lg-0 ml-lg-auto" data-aos="fade-up">
-						<nav>
-							<ul class="c-footer__nav-list my-10 my-lg-30">
-								{% for item in footer_col_2.items %}
-									<li class="c-footer__nav-list-item {{ item.classes|join(' ') }}">
-										<a href="{{ item.link }}" class="c-footer__link text-small">{{ item.title }}</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</nav>
-					</div>
-				{% endif %}
-				{% if footer_col_3.items %}
-					<div class="col-6 col-md-4 col-lg-2 mr-lg-0 ml-lg-auto" data-aos="fade-up">
-						<nav>
-							<ul class="c-footer__nav-list my-10 my-lg-30">
-								{% for item in footer_col_3.items %}
-									<li class="c-footer__nav-list-item {{ item.classes|join(' ') }}">
-										<a href="{{ item.link }}" class="c-footer__link text-small">{{ item.title }}</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</nav>
-					</div>
-				{% endif %}
+					{% endif %}
+				{% endfor %}
+
 			</div>
 		</div>
 	</div>
 
-	<div class="c-footer__privacy">
+	<div class="l-footer__bottom">
 		<div class="container">
-			<div class="row">
-				<div class="text-300 c-footer__copyright">
-					© {{ 'now' | date('Y') }} 
-					<a href="{{ site.link }}">{{ site.title }}</a>
-				</div>
-				<nav>
-					{% if legal %}
+			<div class="l-footer__bottom-inner">
+				<p class="l-footer__copyright">
+					© {{ 'now'|date('Y') }} {{ options.company_name ?: site.title }}
+					{% if options.vat %}<span class="l-footer__sep" aria-hidden="true">·</span> {{ __('Ondernemingsnr.', 'cobepa') }} {{ options.vat }}{% endif %}
+				</p>
+
+				{% if legal.items %}
+					<nav class="l-footer__legal" aria-label="{{ __('Juridisch', 'cobepa') }}">
 						{% for item in legal.items %}
-							<a href="{{ item.link }}" class="text-300">{{ item.title }}</a>
+							<a href="{{ item.link }}">{{ item.title }}</a>
 						{% endfor %}
-					{% endif %}
-				</nav>
-				<div class="row c-footer__created">
+					</nav>
+				{% endif %}
+
+				<div class="l-footer__created">
 					<span>site created by</span>
-					<a href="https://rawd.be/" target="_blank">
-						<img class="created-logo" src="{{ theme.link }}/src/img/rawd/logo-rawd-white.svg">
+					<a href="https://rawd.be/" target="_blank" rel="noopener" aria-label="RAWD">
+						<img class="l-footer__created-logo" src="{{ theme.link }}/src/img/rawd/logo-rawd-white.svg" alt="RAWD" width="32" height="16">
 					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </footer>
-
-{#<div class="c-footer__copyright">
-	<div class="container">
-		<div class="c-footer__copyright-inner">
-			© {{"now"|date("Y")}} Copyright: <a href="{{site.link}}">{{site.title}}</a> | Created by: <a href="https://rawd.be" target="_blank">RAWD</a>
-		</div>
-	</div>
-</div>#}

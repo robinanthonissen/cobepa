@@ -1,86 +1,127 @@
+// ----------------------------------------
+// Titels – Impact, uppercase
+// ----------------------------------------
+@mixin heading {
+  font-family: $font-heading;
+  font-weight: $font-weight-heading;
+  font-synthesis: none; // Impact heeft geen bold, geen fake bold
+  line-height: $line-height-heading;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: $text;
+}
+
 h1, h2, h3,
 h4, h5, h6,
 .h1, .h2, .h3,
 .h4, .h5, .h6 {
-  font-family: $font-heading;
-  font-weight: $font-weight-heading;
-  line-height: $line-height-base;
+  @include heading;
+  margin-top: 0;
   margin-bottom: 1.6rem;
 
-  @include media(lg){
+  @include media(lg) {
     margin-bottom: 2.4rem;
   }
 
-  span {
-    font-weight: 400;
+  span,
+  strong,
+  b {
+    font-weight: $font-weight-heading;
   }
 }
 
 h1, .h1 {
-  //@include rfs(50);
-  font-size: 3.2rem;
+  font-size: 4.4rem;
   @include media(md) {
-    font-size: 3.6rem;
+    font-size: 6.4rem;
+  }
+  @include media(lg) {
+    font-size: 8.8rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 3.6rem;
+  @include media(md) {
+    font-size: 4.4rem;
   }
   @include media(lg) {
     font-size: 5.6rem;
   }
 }
 
-h2, .h2 {
-  //@include rfs(42);
-  font-size: 3rem;
-  @include media(md) {
-    font-size: 3.4rem;
-  }
-  @include media(lg) {
-    font-size: 4.2rem;
-  }
-}
-
 h3, .h3 {
-  //@include rfs(36);
   font-size: 2.8rem;
   @include media(lg) {
-    font-size: 3.8rem;
+    font-size: 3.6rem;
   }
 }
 
 h4, .h4 {
-  //@include rfs(28);
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   @include media(lg) {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 }
 
 h5, .h5 {
-  //@include rfs(24);
-  font-size: 1.8rem;
+  font-size: 2rem;
   @include media(lg) {
     font-size: 2.2rem;
   }
 }
 
 h6, .h6 {
-  //@include rfs(20);
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+}
+
+// Groot display-formaat (hero)
+.display {
+  @include heading;
+  font-size: 5.6rem;
+  @include media(md) {
+    font-size: 8rem;
+  }
   @include media(lg) {
-    font-size: 1.8rem;
+    font-size: 12rem;
   }
 }
 
+// Bovenregel boven titels
+.overline {
+  display: block;
+  margin: 0 0 1.2rem;
+  font-family: $font-normal;
+  font-size: 1.2rem;
+  font-weight: $font-weight-bold;
+  line-height: 1.4;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: $primary;
+
+  @include media(lg) {
+    font-size: 1.4rem;
+  }
+}
+
+// ----------------------------------------
+// Tekst – Inter
+// ----------------------------------------
 p, body {
   font-family: $font-normal;
   font-weight: normal;
   line-height: $line-height-base;
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
 strong,
 b,
 .bold {
-  //font-family: var(--font-normal);
-  font-weight: bold;
+  font-weight: $font-weight-semibold;
 }
 
 .underline {
@@ -88,8 +129,6 @@ b,
 }
 
 a {
-  //color: var(--color-black);
-  //color: inherit;
   text-decoration: none;
 
   &:hover {
@@ -107,96 +146,129 @@ ul {
 .text-sm {
   font-size: 1.2rem;
   line-height: $line-height-base;
-  @include media(lg) {
-    font-size: 1.2rem;
-  }
 }
 
 .text-300,
 .text-md {
   font-size: 1.4rem;
   line-height: $line-height-base;
-  @include media(lg) {
-    font-size: 1.4rem;
-  }
 }
 
 .text-400,
 .text-lg {
   font-size: 1.6rem;
   line-height: $line-height-base;
-  @include media(lg) {
-    font-size: 1.6rem;
-  }
 }
 
 .text-500,
 .text-xl {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: $line-height-base;
-  @include media(lg) {
-    font-size: 1.8rem;
+  @include media(md) {
+    font-size: 1.7rem;
   }
 }
 
 .text-600,
 .text-xxl {
-  font-size: 2rem;
-  line-height: $line-height-base;
+  font-size: 1.8rem;
+  line-height: 1.5;
   @include media(lg) {
     font-size: 2rem;
   }
 }
 
+.text-muted {
+  color: $text-muted !important;
+}
+
+// ----------------------------------------
+// WYSIWYG-inhoud
+// ----------------------------------------
 .content-wrapper {
+  color: $text-body;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  h2, h3, h4 {
+    margin-top: 4rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
   ul, ol {
+    margin: 0 0 1.6rem;
     li {
-      padding: 2px 0 2px 2rem;
+      padding: .2rem 0 .2rem 2.4rem;
       position: relative;
     }
   }
 
+  ol {
+    padding-left: 2rem;
+    li {
+      padding-left: .4rem;
+    }
+  }
+
   ul li {
-    &::before{
+    &::before {
       content: '';
       width: .8rem;
       height: .8rem;
       background-color: $primary;
       position: absolute;
-      top: 12px;
+      top: 1.1rem;
       left: 0;
       display: inline-block;
     }
   }
 
-  blockquote {
-    background-color: $secondary-faded;
-    color: $secondary;
-    padding: 1.2rem 1.6rem;
-    margin-bottom: 1.6rem;
+  a:not(.btn) {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
 
-    @include media(lg){
-      padding: 1.6rem 2.4rem;
-    }
+  blockquote {
+    background-color: $sand-light;
+    color: $text;
+    padding: 1.6rem 2.4rem;
+    margin: 0 0 1.6rem;
+    border-left: 4px solid $primary;
 
     p {
       margin-bottom: 0 !important;
-      font-weight: bold;
+      font-weight: $font-weight-semibold;
     }
   }
 
-  .bg-primary, .bg-secondary, .bg-black, .bg-dark{
+  .bg-primary, .bg-secondary, .bg-black, .bg-dark {
     ul li {
-      &::before{
+      &::before {
         background-color: $white;
       }
     }
   }
-  .bg-secondary-faded{
-    ul li {
-      &::before{
-        background-color: $secondary;
-      }
-    }
+}
+
+// Tekst op groene achtergrond
+.bg-primary,
+.bg-dark {
+  color: $text-on-primary;
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $white;
+  }
+
+  .overline {
+    color: $sand;
+  }
+
+  a:not(.btn) {
+    color: $white;
   }
 }

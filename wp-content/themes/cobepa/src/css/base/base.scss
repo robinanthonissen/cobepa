@@ -1,3 +1,20 @@
+:root {
+	--color-primary: #{$primary};
+	--color-primary-dark: #{$primary-dark};
+	--color-primary-light: #{$primary-light};
+	--color-sand: #{$sand};
+	--color-sand-light: #{$sand-light};
+	--color-cream: #{$cream};
+	--color-text: #{$text};
+	--color-text-body: #{$text-body};
+	--color-text-muted: #{$text-muted};
+	--color-border: #{$border-color};
+	--font-normal: #{$font-normal};
+	--font-heading: #{$font-heading};
+	--header-height: #{$header-height-mobile};
+	--admin-bar-height: var(--wp-admin--admin-bar--height, 0px);
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -5,21 +22,89 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "liga" 1;
   font-feature-settings: "liga" 1;
+  scroll-padding-top: calc(#{$header-height-collapsed} + 2.4rem);
 }
 body {
-  background: var(--color-charcoal-100);
-  font-family: $font-normal; //var(--font-normal);
+  background: $cream;
+  color: $text-body;
+  font-family: $font-normal;
   font-weight: 400;
   font-size: 1.6rem;
-  line-height: 1.4;
+  line-height: $line-height-base;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+
+  @include media(md) {
+    font-size: 1.7rem;
+  }
 }
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+::selection {
+  background: $primary;
+  color: $white;
+}
+
+:focus-visible {
+  outline: 3px solid $primary;
+  outline-offset: 2px;
+}
+
+// Container: 1240px content + zijmarge
+.container {
+  max-width: calc(#{$container-width} + 4rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @include media(md) {
+    max-width: calc(#{$container-width} + 6.4rem);
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+}
+
+// Springbalk: terugkerend beeldelement (groen-wit)
+.u-pole {
+  height: 1.2rem;
+  background: repeating-linear-gradient(90deg, $primary 0 6.4rem, $white 6.4rem 12.8rem);
+
+  &--sm {
+    height: .8rem;
+    background: repeating-linear-gradient(90deg, $primary 0 4rem, $white 4rem 8rem);
+  }
+}
+
+.screen-reader-text,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1.6rem;
+  z-index: 1000;
+  padding: 1.2rem 2rem;
+  background: $primary;
+  color: $white !important;
+  font-weight: 600;
+
+  &:focus {
+    top: 1.6rem;
+  }
 }

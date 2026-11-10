@@ -1,25 +1,45 @@
+// ----------------------------------------
+// Titels: Impact (huisstijl). Impact is geen webfont en ontbreekt op
+// Android/Linux, daarom eerst de lokale Impact en anders Anton
+// (zelf gehost, SIL Open Font License) als visueel verwante fallback.
+// ----------------------------------------
 @font-face {
-    font-family:"Euclid Circular";
-    font-display: auto;
-    src: url("../../src/fonts/EuclidCircularB-Regular-WebTrial.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Cobepa Display';
+	src: local('Impact'),
+		url('../../src/fonts/anton-latin-400-normal.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+// ----------------------------------------
+// Lopende tekst: Inter (zelf gehost, SIL Open Font License)
+// ----------------------------------------
+@font-face {
+	font-family: 'Inter';
+	src: url('../../src/fonts/inter-latin-400-normal.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 @font-face {
-    font-family: "Euclid Circular";
-    src: url("../../src/fonts/EuclidCircularB-RegularItalic-WebTrial.woff") format("woff");
-    font-weight: normal;
-    font-style: italic;
+	font-family: 'Inter';
+	src: url('../../src/fonts/inter-latin-500-normal.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
 }
 @font-face {
-    font-family: "Euclid Circular";
-    src: url("../../src/fonts/EuclidCircularB-Bold-WebTrial.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
+	font-family: 'Inter';
+	src: url('../../src/fonts/inter-latin-600-normal.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
 }
 @font-face {
-    font-family: "Euclid Circular";
-    src: url("../../src/fonts/EuclidCircularB-BoldItalic-WebTrial.woff") format("woff");
-    font-weight: bold;
-    font-style: italic;
+	font-family: 'Inter';
+	src: url('../../src/fonts/inter-latin-700-normal.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }

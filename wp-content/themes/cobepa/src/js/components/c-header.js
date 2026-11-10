@@ -1,23 +1,26 @@
 import 'nodelist-foreach-polyfill'
-//import Headroom from "headroom.js"
 
+// Voegt .collapsed toe zodra er voorbij de header gescrold wordt (schaduw + lagere header)
 const cHeaderInit = () => {
-    var header = document.querySelector("header")
+    const header = document.querySelector('.js-l-header')
+    if (!header) return
 
+    const threshold = header.offsetHeight + 40
+    let ticking = false
 
-    let scrollpos = window.scrollY
-    const header_height = header.offsetHeight + 150
+    const update = () => {
+        header.classList.toggle('collapsed', window.scrollY >= threshold)
+        ticking = false
+    }
 
-    window.addEventListener('scroll', function() { 
-        scrollpos = window.scrollY;
-
-        if (scrollpos >= header_height) {
-            header.classList.add("collapsed")
-        } else { 
-            header.classList.remove("collapsed")
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(update)
+            ticking = true
         }
-    })
+    }, { passive: true })
 
+    update()
 }
 
 export default cHeaderInit

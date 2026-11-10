@@ -37,6 +37,42 @@
             "endpoint": 0
         },
         {
+            "key": "field_6730b1a1c0b01",
+            "label": "Merknaam",
+            "name": "brand_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Woordmerk in header en footer. Leeg = sitetitel.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6730b1a1c0b02",
+            "label": "Header knop",
+            "name": "header_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Knop rechts in de header en in het mobiele menu (bv. Kalender).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_631104902f3eb",
             "label": "Footer",
             "name": "",
@@ -52,6 +88,26 @@
             },
             "placement": "left",
             "endpoint": 0
+        },
+        {
+            "key": "field_6730b1a1c0b03",
+            "label": "Footer tekst",
+            "name": "footer_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Korte tekst onder het woordmerk in de footer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
         },
         {
             "key": "field_632b72602f826",
@@ -111,6 +167,26 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_6730b1a1c0b04",
+            "label": "Naam organisatie",
+            "name": "company_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Bv. Cobepa GB VZW – gebruikt in de copyright-regel.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6320d4289d292",
@@ -250,6 +326,23 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_6730b1a1c0b05",
+            "label": "Google Maps link",
+            "name": "maps_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Optioneel. Leeg = link wordt opgebouwd uit het adres.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_6320d48a9d299",
@@ -470,5 +563,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683395375
+    "modified": 1794303348
 }

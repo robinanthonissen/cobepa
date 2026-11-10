@@ -1,305 +1,184 @@
+// ----------------------------------------
+// Mobiel menu (< lg)
+// ----------------------------------------
 .c-menu {
-	$self: &;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-	background-color: transparent; //rgba(0,0,0, .8);
-  transition: all .8s ease;
-  &__image{
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 50%;
-    //background-image: url('https://www.molenhofbrecht.be/sites/all/themes/gavias_laikafood/images/img1.jpg');
-    background-size: cover;
-    background-position: center center;
-    transform: translate(-100%, 0);
-    transition: all .6s ease;
-    //visibility: hidden;
-    //opacity: 0;
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	visibility: hidden;
+	pointer-events: none;
 
-    @include media(md){
-      display: block;
-    }
-  }
-  #{$self}__inner {
+	@include media(lg) {
+		display: none;
+	}
+
+	&__inner {
 		position: absolute;
-		top: 0;
-    bottom: 0;
-		right: 0;
-    width: 100%;
-		height: 100%;
-    z-index: 2;
-		//overflow-y: auto;
-    overflow: hidden;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
-    background-color: rgba($primary, .8); //$beigebg;
-    transform: translate(100%, 0);
-    transition: all .8s ease;
-    padding: 4rem 0 8.8rem;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+		background-color: $primary;
+		color: $white;
+		transform: translateX(100%);
+		transition: transform .4s cubic-bezier(.215, .61, .355, 1);
+	}
 
-    @include media(md){
-      //min-width: 48rem;
-      width: 50%;
-    }
+	// ---------- Bovenbalk ----------
+	&__top {
+		flex: none;
+		border-bottom: 1px solid rgba($white, .16);
 
-    .container{
-      @include media(sm){
-        width: 70%;
-      }
-      @include media(md){
-        //width: 70%;
-      }
-      @include media(3xl){
-        width: 60%;
-      }
-    }
-  }
-  &__close{
-    position: absolute;
-    top: 2.4rem;
-    right: 2.4rem;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    background-color: transparent; //rgba(249, 247, 243, .8);
-    //border: 2px solid $gray-600;
-    padding: .4rem;
-    cursor: pointer;
-    transition: all .5s ease;
+		&-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: $header-height-mobile;
 
-    @include media(lg){
-      width: 6.4rem;
-      height: 6.4rem;
-      padding: 1.8rem;
-      top: 4rem;
-      right: 4rem;
-    }
+			@include media(md) {
+				height: $header-height-tablet;
+			}
+		}
+	}
 
-    svg{
-      width: 100%;
-      height: auto;
-      fill: $white;
-      transition: all .3s ease;
-    }
+	&__brand {
+		display: inline-flex;
+		flex-direction: column;
+		gap: .2rem;
+		text-decoration: none !important;
 
-    &:hover{
-      border-color: $light;
+		&-name {
+			font-family: $font-heading;
+			font-synthesis: none;
+			font-size: 3rem;
+			line-height: 1;
+			text-transform: uppercase;
+			color: $white;
+		}
 
-      svg{
-        fill: $light;
-      }
-    }
-  }
-  &__nav{
-    overflow-y: scroll;
-    ul li{
-      padding: 1.6rem;
+		&-tagline {
+			font-size: 1rem;
+			font-weight: $font-weight-semibold;
+			line-height: 1;
+			letter-spacing: .2em;
+			text-transform: uppercase;
+			color: $sand;
+		}
+	}
 
-      a{
-        font-size: 2.4rem;
-        line-height: 1.1;
-        font-weight: 500;
-        color: $white !important;
-        transition: all .3s ease;
+	&__close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 4.8rem;
+		height: 4.8rem;
+		padding: 0;
+		border: 1px solid rgba($white, .4);
+		border-radius: $border-radius;
+		background: transparent;
+		cursor: pointer;
+		transition: background-color .2s ease;
 
-        @include media(sm){
-          font-size: 3.2rem;
-        }
-        @include media(lg){
-          font-size: 3.2rem;
-        }
-        @include media(xl){
-          font-size: 3.6rem;
-        }
-        @include media(2xl){
-          font-size: 4rem;
-        }
+		svg {
+			width: 2.4rem;
+			height: 2.4rem;
+			fill: none;
+			stroke: $white;
+			stroke-width: 2;
+		}
 
-        &:hover{
-          text-decoration: none;
-          color: $light !important;
-        }
-      }
-    }
-  }
+		&:hover {
+			background-color: rgba($white, .1);
+		}
+
+		&:focus-visible {
+			outline-color: $white;
+		}
+	}
+
+	// ---------- Inhoud ----------
+	&__body {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	&__nav {
+		> ul > li {
+			border-bottom: 1px solid rgba($white, .16);
+		}
+	}
+
+	&__link {
+		display: block;
+		padding: 1.6rem 0;
+		font-family: $font-heading;
+		font-synthesis: none;
+		font-size: 4rem;
+		line-height: 1;
+		text-transform: uppercase;
+		color: $white !important;
+		text-decoration: none !important;
+
+		@include media(md) {
+			font-size: 5.6rem;
+		}
+
+		&:hover,
+		&.is-active {
+			color: $sand !important;
+		}
+
+		&:focus-visible {
+			outline-color: $white;
+		}
+	}
+
+	&__sub {
+		padding: 0 0 1.6rem;
+
+		&-link {
+			display: block;
+			padding: .8rem 0;
+			font-size: 1.8rem;
+			font-weight: $font-weight-medium;
+			color: $text-on-primary !important;
+		}
+	}
+
+	&__cta.btn {
+		align-self: flex-start;
+	}
+
+	&__contact {
+		margin-top: auto;
+		display: flex;
+		flex-direction: column;
+		gap: .8rem;
+		font-size: 1.6rem;
+
+		a {
+			color: $text-on-primary !important;
+			min-height: 4.4rem;
+			display: inline-flex;
+			align-items: center;
+		}
+	}
 }
 
 .c-menu-is-open {
-  overflow: hidden;
-	& body {
-		overflow: visible;
-		height: 100%;
+	overflow: hidden;
+
+	.c-menu {
+		visibility: visible;
+		pointer-events: auto;
+
+		&__inner {
+			transform: translateX(0);
+		}
 	}
-  .c-menu {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-    visibility: visible;
-    background-color: $white;
-
-    &__image{
-      transform: translate(0, 0);
-    }
-    &__inner{
-      transform: translate(0, 0);
-    }
-  }
-}
-
-
-
-.c----menu {
-	$self: &;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-	background: rgba(0,0,0, .6);
-  transition: all .3s ease;
-  #{$self}__inner {
-		position: absolute;
-		top: 0;
-		left: 0;
-    width: 100%;
-		height: 100%;
-		overflow-y: auto;
-		-webkit-overflow-scrolling: touch;
-  }
-
-  &__header{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  &__logo{
-    flex-basis: calc(100% - 7.2rem);
-    max-width: calc(100% - 7.2rem);
-    height: 7.2rem;
-    background-color: transparent;
-    border: 1px solid $light;
-    display: inline-flex;
-    align-items: center;
-    padding: 1.2rem 1.6rem;
-
-    .logo{
-      width: auto;
-      height: 48px;
-
-      @include media(md){
-          height: 56px;
-      }
-      @include media(xl){
-          height: 69px;
-      }
-    }
-  }
-  &__close{
-    flex-basis: 7.2rem;
-    /*position: absolute;
-    top: 0;
-    right: 0;*/
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 7.2rem;
-    height: 7.2rem;
-    background-color: transparent; //rgba(249, 247, 243, .8);
-    border: 1px solid $light;
-    padding: 1.2rem;
-    cursor: pointer;
-    transition: all .5s ease;
-
-    /*@include media(lg){
-      width: 6.4rem;
-      height: 6.4rem;
-      padding: 1.8rem;
-      top: 4rem;
-      right: 4rem;
-    }*/
-
-    svg{
-      width: 2.1rem; //100%;
-      height: auto;
-      fill: $white;
-      transition: all .3s ease;
-    }
-
-    &:hover{
-      border-color: $light;
-
-      svg{
-        fill: $light;
-      }
-    }
-  }
-  &__nav{
-    flex-basis: 100%;
-    max-width: 100%;
-    ul li{
-      padding: 1.6rem;
-
-      a{
-        font-size: 2.4rem;
-        line-height: 1.1;
-        color: $dark !important;//$beige50;
-        transition: all .3s ease;
-        font-weight: bold;
-
-        @include media(sm){
-          font-size: 3.2rem;
-        }
-        @include media(lg){
-          font-size: 3.2rem;
-        }
-        @include media(xl){
-          font-size: 3.6rem;
-        }
-        @include media(2xl){
-          font-size: 4rem;
-        }
-
-        &:hover{
-          text-decoration: none;
-          color: $white !important;
-          //font-weight: bold;
-        }
-      }
-    }
-  }
-}
-
-.c----menu-is-open {
-  overflow: hidden;
-	& body {
-		overflow: visible;
-		height: 100%;
-	}
-  .c-menu {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-    visibility: visible;
-  }
 }
