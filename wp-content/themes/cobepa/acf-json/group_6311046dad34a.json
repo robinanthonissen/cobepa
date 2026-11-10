@@ -37,26 +37,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_6730b1a1c0b01",
-            "label": "Merknaam",
-            "name": "brand_name",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Woordmerk in header en footer. Leeg = sitetitel.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6730b1a1c0b02",
             "label": "Header knop",
             "name": "header_button",
@@ -563,5 +543,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1794303348
+    "modified": 1794309594
 }

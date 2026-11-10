@@ -3,11 +3,8 @@
 
 		<div class="c-menu__top">
 			<div class="container c-menu__top-inner">
-				<a href="{{ site.link }}" class="c-menu__brand" tabindex="-1">
-					<span class="c-menu__brand-name">{{ options.brand_name ?: site.title }}</span>
-					{% if site.description %}
-						<span class="c-menu__brand-tagline">{{ site.description }}</span>
-					{% endif %}
+				<a href="{{ site.link }}" class="c-menu__brand" aria-label="{{ site.title }} – {{ __('home', 'cobepa') }}" tabindex="-1">
+					{% include 'partial/logo.twig' with { class: 'c-menu__logo' } %}
 				</a>
 				<button class="c-menu__close js-c-menu-button" type="button" aria-label="{{ __('Menu sluiten', 'cobepa') }}" tabindex="-1">
 					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>

@@ -10,11 +10,8 @@
 			<div class="l-footer__grid">
 
 				<div class="l-footer__col l-footer__col--brand">
-					<a href="{{ site.link }}" class="l-footer__brand">
-						<span class="l-footer__brand-name">{{ options.brand_name ?: site.title }}</span>
-						{% if site.description %}
-							<span class="l-footer__brand-tagline">{{ site.description }}</span>
-						{% endif %}
+					<a href="{{ site.link }}" class="l-footer__brand" aria-label="{{ site.title }} – {{ __('home', 'cobepa') }}">
+						{% include 'partial/logo.twig' with { class: 'l-footer__logo' } %}
 					</a>
 					{% if options.footer_text %}
 						<p class="l-footer__text">{{ options.footer_text|nl2br }}</p>
@@ -22,8 +19,9 @@
 					{% include 'partial/socials.twig' %}
 				</div>
 
-				{% if has_address %}
-					<div class="l-footer__col">
+				{# Adres- en contactkolom altijd renderen zodat het raster zijn kolommen behoudt #}
+				<div class="l-footer__col{% if not has_address %} is-empty{% endif %}">
+					{% if has_address %}
 						<h2 class="l-footer__title">{{ __('Adres', 'cobepa') }}</h2>
 						<address class="l-footer__address">
 							{% if options.address %}{{ options.address }}<br>{% endif %}
@@ -33,11 +31,11 @@
 							{{ __('Route plannen', 'cobepa') }}
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
 						</a>
-					</div>
-				{% endif %}
+					{% endif %}
+				</div>
 
-				{% if options.phone or options.email %}
-					<div class="l-footer__col">
+				<div class="l-footer__col{% if not (options.phone or options.email) %} is-empty{% endif %}">
+					{% if options.phone or options.email %}
 						<h2 class="l-footer__title">{{ __('Contact', 'cobepa') }}</h2>
 						<ul class="l-footer__list">
 							{% if options.email %}
@@ -47,8 +45,8 @@
 								<li><a href="tel:{{ options.phone|replace({' ': '', '.': '', '/': ''}) }}">{{ options.phone }}</a></li>
 							{% endif %}
 						</ul>
-					</div>
-				{% endif %}
+					{% endif %}
+				</div>
 
 				{% for menu in footer_menus %}
 					{% if menu.items %}

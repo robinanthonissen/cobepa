@@ -25,10 +25,27 @@
 		}
 	}
 
+	// Vaste kolommen: ontbrekende gegevens laten een lege kolom, geen uitgerekte kolommen
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		grid-template-columns: minmax(0, 1fr);
 		gap: 4rem 4.8rem;
+
+		@include media(sm) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		@include media(lg) {
+			grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	// Lege kolom: enkel op desktop ruimte voorzien
+	&__col.is-empty {
+		display: none;
+
+		@include media(lg) {
+			display: block;
+		}
 	}
 
 	&__col--brand {
@@ -37,29 +54,24 @@
 		gap: 2rem;
 	}
 
-	// ---------- Woordmerk ----------
+	// ---------- Logo ----------
 	&__brand {
 		display: inline-flex;
-		flex-direction: column;
-		gap: .4rem;
-		text-decoration: none !important;
+		align-self: flex-start;
+		color: $white;
+		--logo-tagline-color: #{$sand};
 
-		&-name {
-			font-family: $font-heading;
-			font-synthesis: none;
-			font-size: 4rem;
-			line-height: 1;
-			text-transform: uppercase;
-			color: $white;
+		&:focus-visible {
+			outline-color: $white;
 		}
+	}
 
-		&-tagline {
-			font-size: 1.1rem;
-			font-weight: $font-weight-semibold;
-			line-height: 1;
-			letter-spacing: .2em;
-			text-transform: uppercase;
-			color: $sand;
+	&__logo {
+		height: 5.2rem;
+		color: $white;
+
+		@include media(lg) {
+			height: 5.6rem;
 		}
 	}
 

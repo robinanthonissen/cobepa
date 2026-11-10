@@ -44,27 +44,17 @@
 
 	&__brand {
 		display: inline-flex;
-		flex-direction: column;
-		gap: .2rem;
-		text-decoration: none !important;
+		color: $white;
+		--logo-tagline-color: #{$sand};
 
-		&-name {
-			font-family: $font-heading;
-			font-synthesis: none;
-			font-size: 3rem;
-			line-height: 1;
-			text-transform: uppercase;
-			color: $white;
+		&:focus-visible {
+			outline-color: $white;
 		}
+	}
 
-		&-tagline {
-			font-size: 1rem;
-			font-weight: $font-weight-semibold;
-			line-height: 1;
-			letter-spacing: .2em;
-			text-transform: uppercase;
-			color: $sand;
-		}
+	&__logo {
+		height: 3.8rem;
+		color: $white;
 	}
 
 	&__close {

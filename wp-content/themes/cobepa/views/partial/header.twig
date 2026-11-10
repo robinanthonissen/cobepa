@@ -5,10 +5,7 @@
 		<div class="l-header__inner">
 
 			<a href="{{ site.link }}" class="l-header__brand" aria-label="{{ site.title }} – {{ __('home', 'cobepa') }}">
-				<span class="l-header__brand-name">{{ options.brand_name ?: site.title }}</span>
-				{% if site.description %}
-					<span class="l-header__brand-tagline">{{ site.description }}</span>
-				{% endif %}
+				{% include 'partial/logo.twig' with { class: 'l-header__logo' } %}
 			</a>
 
 			{% if main.items %}
