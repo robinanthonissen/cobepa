@@ -28,21 +28,24 @@
 @import "./components/c-swiper.scss";
 @import "./components/c-toggle-block.scss";
 @import "./components/c-tabs.scss";
+@import "./components/c-tag.scss";
+@import "./components/c-event-card.scss";
+@import "./components/c-page-header.scss";
 
 /* ----------------------------------------
   BLOCKS
 ---------------------------------------- */
 @import "./blocks/b-hero.scss";
-@import "./blocks/b-cta.scss";
 @import "./blocks/b-editor.scss";
 @import "./blocks/b-contact.scss";
 @import "./blocks/b-cards.scss";
-@import "./blocks/b-image-text.scss";
+@import "./blocks/b-sections.scss";
 
 /* ----------------------------------------
   PAGES
 ---------------------------------------- */
 @import "./pages/404";
 @import "./pages/page-header";
+@import "./pages/p-events";
 //@import "./wp/admin.css";
 //@import "./wp/admin.scss";

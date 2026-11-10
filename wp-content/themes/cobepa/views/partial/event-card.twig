@@ -1,0 +1,23 @@
+{#
+	Event-kaart (homepage, events-block, "andere evenementen")
+	Vars: event (CobepaEvent), heading (h2|h3, standaard h3)
+#}
+{% set tag = heading ?: 'h3' %}
+<article class="c-event-card{% if event.is_past %} is-past{% endif %}">
+	<div class="c-event-card__date" aria-hidden="true">
+		<span class="c-event-card__day">{{ event.day }}</span>
+		<span class="c-event-card__month">{{ event.month_short }}</span>
+	</div>
+	<div class="c-event-card__body">
+		{% if event.tag_label %}
+			<span class="c-tag">{{ event.tag_label }}</span>
+		{% endif %}
+		<{{ tag }} class="c-event-card__title">
+			<a class="c-event-card__link" href="{{ event.link }}">{{ event.title }}</a>
+		</{{ tag }}>
+		<p class="c-event-card__meta">
+			<time datetime="{{ event.date_iso }}" class="visually-hidden">{{ event.date_short }}</time>
+			{{ [event.time_range, event.arena_label]|filter(v => v)|join(' · ') }}
+		</p>
+	</div>
+</article>

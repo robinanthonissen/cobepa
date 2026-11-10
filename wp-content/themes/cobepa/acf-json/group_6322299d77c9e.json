@@ -45,6 +45,26 @@
             "mime_types": ""
         },
         {
+            "key": "field_cbp_it_overline",
+            "label": "Bovenregel",
+            "name": "overline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "bv. Over ons",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_632229b49c4d5",
             "label": "Title",
             "name": "title",
@@ -172,17 +192,12 @@
                 "id": ""
             },
             "choices": {
-                "bg-primary": "Primary",
-                "bg-secondary": "Secondary",
-                "bg-primary-faded": "Primary Faded",
-                "bg-secondary-faded": "Secondary Faded",
-                "bg-white": "White",
-                "bg-black": "Black",
-                "bg-dark": "Dark",
-                "bg-light": "Light",
-                "bg-transparent": "Transparent"
+                "bg-white": "Wit",
+                "bg-cream": "Crème",
+                "bg-sand-light": "Zand",
+                "bg-primary": "Groen"
             },
-            "default_value": "bg-transparent",
+            "default_value": "bg-white",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -196,7 +211,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/image-text"
+                "value": "acf/image-text"
             }
         ]
     ],
@@ -209,5 +224,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683748834
+    "modified": 1794310866
 }

@@ -1,56 +1,33 @@
-{% if posts.pagination.pages is not empty %}
-<nav class="pagination-block">
-  <ul class="pagination">
-  	{% if pagination.pages|first and pagination.pages|first.current != true %}
-    <li class="first btn">
-      <a href="{{ pagination.pages|first.link }}">First</a>
-    </li>
-    {% else %}
-    <li class="first btn disabled">
-      <button disabled>First</button>
-    </li>
-    {% endif %}
-
-    {% if pagination.prev %}
-    <li class="prev btn">
-      <a href="{{ pagination.prev.link }}">Previous</a>
-    </li>
-    {% else %}
-    <li class="prev btn disabled">
-      <button disabled>Previous</button>
-    </li>
-    {% endif %}
-
-    {% for page in pagination.pages %}
-      {% if page.link %}
-      <li>
-        <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
-      </li>
-      {% else %}
-      <li class="current">
-      	<span class="{{ page.class }}">{{ page.title }}</span>
-      </li>
-      {% endif %}
-    {% endfor %}
-
-    {% if pagination.next %}
-    <li class="next btn">
-      <a href="{{ pagination.next.link }}">Next</a>
-    </li>
-    {% else %}
-    <li class="next btn disabled">
-      <button disabled>Next</button>
-    </li>
-    {% endif %}
-    {% if pagination.pages|last and pagination.pages|last.current != true %}
-    <li class="last btn">
-      <a href="{{ pagination.pages|last.link }}">Last</a>
-    </li>
-    {% else %}
-    <li class="last btn disabled">
-      <button disabled>Last</button>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
+{#
+	Paginering
+	Vars: pagination (Timber pagination object, bv. posts.pagination)
+#}
+{% if pagination.pages|length > 1 %}
+	<nav class="c-pagination" aria-label="{{ __('Paginering', 'cobepa') }}">
+		{% if pagination.prev %}
+			<a class="c-pagination__step" href="{{ pagination.prev.link }}" rel="prev">
+				{% include 'partial/icon.twig' with { name: 'arrow-left' } %}
+				<span>{{ __('Vorige', 'cobepa') }}</span>
+			</a>
+		{% endif %}
+		<ul class="c-pagination__pages">
+			{% for page in pagination.pages %}
+				<li>
+					{% if page.link %}
+						<a class="c-pagination__page" href="{{ page.link }}">{{ page.title }}</a>
+					{% elseif page.current %}
+						<span class="c-pagination__page is-current" aria-current="page">{{ page.title }}</span>
+					{% else %}
+						<span class="c-pagination__dots">{{ page.title }}</span>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+		{% if pagination.next %}
+			<a class="c-pagination__step" href="{{ pagination.next.link }}" rel="next">
+				<span>{{ __('Volgende', 'cobepa') }}</span>
+				{% include 'partial/icon.twig' with { name: 'arrow-right' } %}
+			</a>
+		{% endif %}
+	</nav>
 {% endif %}

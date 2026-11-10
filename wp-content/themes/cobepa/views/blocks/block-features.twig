@@ -1,0 +1,46 @@
+{#
+/**
+ * Block Name: Features Block
+ * Velden: overline, title, text, items (icon, title, text), button, background_color
+ */
+#}
+{% set bg = fields.background_color ?: 'bg-primary' %}
+<section id="{{ block.anchor ? block.anchor : 'block-features-' ~ block.id }}" class="b-features {{ bg }}">
+	<div class="container">
+		{% if fields.overline or fields.title or fields.text %}
+			<div class="b-features__head">
+				{% if fields.overline %}
+					<p class="overline">{{ fields.overline }}</p>
+				{% endif %}
+				{% if fields.title %}
+					<h2 class="b-features__title">{{ fields.title }}</h2>
+				{% endif %}
+				{% if fields.text %}
+					<p class="b-features__intro">{{ fields.text }}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+
+		{% if fields.items %}
+			<ul class="b-features__grid">
+				{% for item in fields.items %}
+					<li class="b-features__item">
+						{% include 'partial/icon.twig' with { name: item.icon, class: 'b-features__icon', stroke: 1.6 } %}
+						<h3 class="b-features__item-title">{{ item.title }}</h3>
+						{% if item.text %}
+							<p class="b-features__item-text">{{ item.text }}</p>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		{% elseif is_preview %}
+			<p class="b-features__placeholder">{{ __('Voeg items toe in de zijbalk.', 'cobepa') }}</p>
+		{% endif %}
+
+		{% if fields.button and fields.button.url %}
+			<div class="b-features__footer">
+				<a class="btn {{ bg == 'bg-primary' ? 'btn-white' : 'btn-primary' }}" href="{{ fields.button.url }}" {% if fields.button.target %}target="{{ fields.button.target }}"{% endif %}>{{ fields.button.title }}</a>
+			</div>
+		{% endif %}
+	</div>
+</section>

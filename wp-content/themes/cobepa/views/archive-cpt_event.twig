@@ -1,0 +1,69 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% embed 'partial/page-header.twig' with {
+		title: title,
+		intro: intro ?: __('Trainingen en wedstrijden springen en dressuur, voor paarden en pony\'s. Klik op een evenement voor het programma, de inschrijvingen en de startlijsten.', 'cobepa'),
+		breadcrumbs: breadcrumbs,
+		class: 'c-page-header--tabs'
+	} %}
+		{% block after %}
+			<div class="container">
+				<nav class="c-period-tabs" aria-label="{{ __('Periode', 'cobepa') }}">
+					{% for period in filter.periods %}
+						<a href="{{ period.link }}" class="c-period-tabs__tab{% if period.active %} is-active{% endif %}" {% if period.active %}aria-current="page"{% endif %}>{{ period.label }}</a>
+					{% endfor %}
+				</nav>
+			</div>
+		{% endblock %}
+	{% endembed %}
+
+	{% if filter.filters %}
+		<section class="c-filters" aria-label="{{ __('Filters', 'cobepa') }}">
+			<div class="container c-filters__inner">
+				{% for group in filter.filters %}
+					<div class="c-filters__group">
+						<span class="c-filters__label" id="filter-{{ loop.index }}">{{ group.label }}</span>
+						<ul class="c-filters__options" aria-labelledby="filter-{{ loop.index }}">
+							{% for option in group.options %}
+								<li>
+									<a href="{{ option.link }}" class="c-chip{% if option.active %} is-active{% endif %}" {% if option.active %}aria-current="true"{% endif %}>{{ option.label }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
+	<section class="p-events">
+		<div class="container">
+			{% if groups %}
+				{% for group in groups %}
+					<div class="p-events__month">
+						<h2 class="p-events__month-title">{{ group.label }}</h2>
+						<div class="p-events__list">
+							{% for event in group.items %}
+								{% include 'partial/event-row.twig' with { event: event } %}
+							{% endfor %}
+						</div>
+					</div>
+				{% endfor %}
+
+				{% include 'partial/pagination.twig' with { pagination: posts.pagination({ show_all: false, mid_size: 1, end_size: 1 }) } %}
+			{% else %}
+				<div class="p-events__empty">
+					{% if filter.is_filtered %}
+						<p>{{ __('Geen evenementen gevonden voor deze selectie.', 'cobepa') }}</p>
+						<a class="btn btn-outline-primary" href="{{ filter.reset }}">{{ __('Filters wissen', 'cobepa') }}</a>
+					{% elseif filter.current.periode == 'afgelopen' %}
+						<p>{{ __('Er zijn nog geen afgelopen evenementen.', 'cobepa') }}</p>
+					{% else %}
+						<p>{{ __('Er zijn momenteel geen aankomende evenementen gepland. Kom binnenkort terug.', 'cobepa') }}</p>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</section>
+{% endblock %}

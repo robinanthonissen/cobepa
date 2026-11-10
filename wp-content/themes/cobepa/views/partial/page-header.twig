@@ -1,0 +1,33 @@
+{#
+	Groene paginakop
+	Vars: title, intro, tag, breadcrumbs ([{title, link}], laatste = huidige pagina), class
+	Block: after (via embed) voor tabs of key facts onderaan
+#}
+<section class="c-page-header{% if class %} {{ class }}{% endif %}">
+	<div class="container">
+		{% if breadcrumbs %}
+			<nav class="c-breadcrumbs" aria-label="{{ __('Kruimelpad', 'cobepa') }}">
+				<ol>
+					{% for crumb in breadcrumbs %}
+						<li>
+							{% if loop.last %}
+								<span aria-current="page">{{ crumb.title }}</span>
+							{% else %}
+								<a href="{{ crumb.link }}">{{ crumb.title }}</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ol>
+			</nav>
+		{% endif %}
+		{% if tag %}
+			<span class="c-tag c-tag--sand">{{ tag }}</span>
+		{% endif %}
+		<h1 class="c-page-header__title">{{ title }}</h1>
+		{% if intro %}
+			<p class="c-page-header__intro">{{ intro }}</p>
+		{% endif %}
+	</div>
+	{# Extra inhoud onderaan (tabs, key facts): gebruik {% embed %} en vul block 'after' #}
+	{% block after %}{% endblock %}
+</section>

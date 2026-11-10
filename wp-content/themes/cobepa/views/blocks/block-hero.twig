@@ -1,28 +1,78 @@
 {#
 /**
  * Block Name: Hero Block
- *
+ * Velden: image, overline, title, text, button, button_2, full_height, show_next_event
  */
 #}
-<section id="{{ block.anchor ? block.anchor : 'block-hero-' ~ block.id }}" class="b-hero">
-    <div class="row b-hero__image lazy {% if not fields.full_height %}small{% endif %}" data-src="{{ Image(fields.image).src }}"{#{ Image(fields.image).src }}"#} {% if is_preview %}style="background-image: url('{{ Image(fields.image).src }}');"{% endif %}>
-        <div class="b-hero__filter"></div>
-        <div class="b-hero__content">
-            <div class="container">
-                <div class="row">
-                    <div class="b-hero__content-inner {% if fields.full_height %}text-center{% endif %}" data-aos="fade-up">
-                        <h1>{{ fields.title }}</h1>
-                        {% if fields.text %}
-                            <p class="text-600">{{ fields.text }}</p>
-                        {% endif %}
-                        {% if fields.button and fields.button.url %}
-                            <div class="button-container">
-                                <a class="btn btn-primary lg" href="{{ fields.button.url }}">{{ fields.button.title }}</a>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{% set next_event = fields.show_next_event ? function('cobepa_get_next_event') : null %}
+{% set image = fields.image ? Image(fields.image) : null %}
+
+<section id="{{ block.anchor ? block.anchor : 'block-hero-' ~ block.id }}" class="b-hero{% if fields.full_height %} b-hero--large{% endif %}{% if next_event %} has-next-event{% endif %}">
+	<div class="b-hero__visual">
+		{% if image %}
+			<img class="b-hero__image"
+				src="{{ image.src('img-xlarge') }}"
+				srcset="{{ image.srcset }}"
+				sizes="100vw"
+				alt="{{ image.alt }}"
+				width="{{ image.width }}" height="{{ image.height }}"
+				fetchpriority="high">
+		{% endif %}
+		<div class="b-hero__shade" aria-hidden="true"></div>
+
+		<div class="container b-hero__content">
+			{% if fields.overline %}
+				<p class="overline b-hero__overline">{{ fields.overline }}</p>
+			{% endif %}
+			{% if fields.title %}
+				<h1 class="b-hero__title{% if fields.full_height %} display{% endif %}">{{ fields.title|nl2br }}</h1>
+			{% endif %}
+			{% if fields.text %}
+				<p class="b-hero__text">{{ fields.text }}</p>
+			{% endif %}
+			{% if (fields.button and fields.button.url) or (fields.button_2 and fields.button_2.url) %}
+				<div class="c-buttons b-hero__buttons">
+					{% if fields.button and fields.button.url %}
+						<a class="btn btn-white btn-lg" href="{{ fields.button.url }}" {% if fields.button.target %}target="{{ fields.button.target }}"{% endif %}>{{ fields.button.title }}</a>
+					{% endif %}
+					{% if fields.button_2 and fields.button_2.url %}
+						<a class="btn btn-outline-white btn-lg" href="{{ fields.button_2.url }}" {% if fields.button_2.target %}target="{{ fields.button_2.target }}"{% endif %}>{{ fields.button_2.title }}</a>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% if next_event %}
+		<div class="container b-hero__next">
+			<article class="c-next-event">
+				<div class="c-next-event__date">
+					<span class="c-next-event__label">{{ __('Eerstvolgend', 'cobepa') }}</span>
+					<span class="c-next-event__day">{{ next_event.day }} {{ next_event.month_short }}</span>
+				</div>
+				<div class="c-next-event__body">
+					<div class="c-next-event__info">
+						{% if next_event.tag_label %}
+							<span class="c-tag">{{ next_event.tag_label }}</span>
+						{% endif %}
+						<h2 class="c-next-event__title">
+							<a class="c-next-event__link" href="{{ next_event.link }}">{{ next_event.title }}</a>
+						</h2>
+						<ul class="c-next-event__meta">
+							{% if next_event.time_range %}
+								<li>{% include 'partial/icon.twig' with { name: 'clock' } %}{{ next_event.time_range }}</li>
+							{% endif %}
+							{% if next_event.arena_label %}
+								<li>{% include 'partial/icon.twig' with { name: 'pin' } %}{{ next_event.arena_label }}</li>
+							{% endif %}
+						</ul>
+					</div>
+					<span class="btn btn-primary c-next-event__btn" aria-hidden="true">
+						{{ __('Meer info', 'cobepa') }}
+						{% include 'partial/icon.twig' with { name: 'arrow-right', class: 'btn__icon' } %}
+					</span>
+				</div>
+			</article>
+		</div>
+	{% endif %}
 </section>

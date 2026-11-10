@@ -1,23 +1,36 @@
 {#
 /**
  * Block Name: CTA Block
- *
+ * Velden: title, text, button, button_2, background_image, background_color
  */
 #}
-<section id="{{ block.anchor ? block.anchor : 'block-cta-' ~ block.id }}" class="b-cta">
-    
-    <div class="b-cta__inner lazy {{ fields.background_color }}" data-aos="fade-up"  data-src="{{ Image(fields.background_image).src }}"{#{ Image(fields.image).src }}"#} {% if is_preview %}style="background-image: url('{{ Image(fields.background_image).src }}');"{% endif %}>
-        <div class="container">
-            {% if fields.title %}
-                <h2>{{ fields.title }}</h2>
-            {% endif %}
-            {% if fields.text %}
-                <div class="text-500">{{ fields.text }}</div>
-            {% endif %}
-            {% if fields.button %}
-                <a href="{{ fields.button.url }}" class="btn btn-primary btn-lg">{{ fields.button.title }}</a>
-            {% endif %}
-        </div>
-    </div>
+{% set image = fields.background_image ? Image(fields.background_image) : null %}
+{% set bg = image ? 'bg-primary' : (fields.background_color ?: 'bg-sand-light') %}
+{% set on_dark = bg == 'bg-primary' %}
 
+<section id="{{ block.anchor ? block.anchor : 'block-cta-' ~ block.id }}" class="b-cta {{ bg }}{% if image %} b-cta--image{% endif %}">
+	{% if image %}
+		<img class="b-cta__image lazy" {% if not is_preview %}src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-{% endif %}src="{{ image.src('img-xlarge') }}" alt="" aria-hidden="true">
+		<div class="b-cta__shade" aria-hidden="true"></div>
+	{% endif %}
+	<div class="container b-cta__inner">
+		<div class="b-cta__content">
+			{% if fields.title %}
+				<h2 class="b-cta__title">{{ fields.title }}</h2>
+			{% endif %}
+			{% if fields.text %}
+				<p class="b-cta__text">{{ fields.text }}</p>
+			{% endif %}
+		</div>
+		{% if (fields.button and fields.button.url) or (fields.button_2 and fields.button_2.url) %}
+			<div class="c-buttons b-cta__buttons">
+				{% if fields.button and fields.button.url %}
+					<a class="btn {{ on_dark ? 'btn-white' : 'btn-primary' }}" href="{{ fields.button.url }}" {% if fields.button.target %}target="{{ fields.button.target }}"{% endif %}>{{ fields.button.title }}</a>
+				{% endif %}
+				{% if fields.button_2 and fields.button_2.url %}
+					<a class="btn {{ on_dark ? 'btn-outline-white' : 'btn-outline-primary' }}" href="{{ fields.button_2.url }}" {% if fields.button_2.target %}target="{{ fields.button_2.target }}"{% endif %}>{{ fields.button_2.title }}</a>
+				{% endif %}
+			</div>
+		{% endif %}
+	</div>
 </section>

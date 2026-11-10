@@ -1,0 +1,44 @@
+{#
+/**
+ * Block Name: Events Block
+ * Velden: overline, title, number, button, empty_text, disciplines, categories, background_color
+ */
+#}
+{% set events = function('cobepa_get_upcoming_events', {
+	number: fields.number ?: 3,
+	disciplines: fields.disciplines ?: [],
+	categories: fields.categories ?: []
+}) %}
+{% set button_url = fields.button and fields.button.url ? fields.button.url : function('get_post_type_archive_link', 'cpt_event') %}
+{% set button_title = fields.button and fields.button.title ? fields.button.title : __('Alle evenementen', 'cobepa') %}
+
+<section id="{{ block.anchor ? block.anchor : 'block-events-' ~ block.id }}" class="b-events {{ fields.background_color ?: 'bg-cream' }}">
+	<div class="container">
+		<div class="c-section-head">
+			<div>
+				{% if fields.overline %}
+					<p class="overline">{{ fields.overline }}</p>
+				{% endif %}
+				{% if fields.title %}
+					<h2 class="c-section-head__title">{{ fields.title }}</h2>
+				{% endif %}
+			</div>
+			<a class="c-link-arrow" href="{{ button_url }}" {% if fields.button and fields.button.target %}target="{{ fields.button.target }}"{% endif %}>
+				{{ button_title }}
+				{% include 'partial/icon.twig' with { name: 'arrow-right' } %}
+			</a>
+		</div>
+
+		{% if events %}
+			<div class="c-event-grid">
+				{% for event in events %}
+					{% include 'partial/event-card.twig' with { event: event } %}
+				{% endfor %}
+			</div>
+		{% else %}
+			<div class="b-events__empty">
+				<p>{{ fields.empty_text ?: __('Er zijn momenteel geen aankomende evenementen gepland.', 'cobepa') }}</p>
+			</div>
+		{% endif %}
+	</div>
+</section>

@@ -45,6 +45,26 @@
             "mime_types": ""
         },
         {
+            "key": "field_cbp_hero_overline",
+            "label": "Bovenregel",
+            "name": "overline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "bv. Cobepa GB VZW",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_631101d40ec62",
             "label": "Title",
             "name": "title",
@@ -101,6 +121,22 @@
             "return_format": "array"
         },
         {
+            "key": "field_cbp_hero_button2",
+            "label": "Tweede knop",
+            "name": "button_2",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_645bf135eec31",
             "label": "Settings",
             "name": "",
@@ -119,11 +155,11 @@
         },
         {
             "key": "field_631f8c7359854",
-            "label": "Full Height",
+            "label": "Groot (homepage)",
             "name": "full_height",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Grote hero met foto. Uit = kleinere hero.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -136,6 +172,26 @@
             "ui": true,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_cbp_hero_next",
+            "label": "Eerstvolgend evenement tonen",
+            "name": "show_next_event",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toont een kaart met het eerstvolgende evenement onderaan de hero.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -143,7 +199,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/hero"
+                "value": "acf/hero"
             }
         ]
     ],
@@ -156,5 +212,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683747142
+    "modified": 1794310866
 }

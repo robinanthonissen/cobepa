@@ -1,0 +1,39 @@
+{#
+	Event-rij (overzichtspagina)
+	Vars: event (CobepaEvent)
+#}
+<article class="c-event-row{% if event.is_past %} is-past{% endif %}">
+	<div class="c-event-row__date" aria-hidden="true">
+		<span class="c-event-row__weekday">{{ event.weekday_short }}</span>
+		<span class="c-event-row__day">{{ event.day }}</span>
+	</div>
+	<div class="c-event-row__body">
+		<div class="c-event-row__main">
+			{% if event.tag_label %}
+				<span class="c-tag">{{ event.tag_label }}</span>
+			{% endif %}
+			<h3 class="c-event-row__title">
+				<a class="c-event-row__link" href="{{ event.link }}">{{ event.title }}</a>
+			</h3>
+			<time class="visually-hidden" datetime="{{ event.date_iso }}">{{ event.date_long }}</time>
+		</div>
+		{% if event.time_range %}
+			<dl class="c-event-row__fact">
+				<dt>{{ __('Uur', 'cobepa') }}</dt>
+				<dd>{{ event.time_range }}</dd>
+			</dl>
+		{% endif %}
+		{% if event.arena_label %}
+			<dl class="c-event-row__fact">
+				<dt>{{ __('Piste', 'cobepa') }}</dt>
+				<dd>{{ event.arena_label }}</dd>
+			</dl>
+		{% endif %}
+		<div class="c-event-row__status">
+			{% if event.status %}
+				<span class="c-badge c-badge--{{ event.status }}">{{ event.status_label }}</span>
+			{% endif %}
+		</div>
+		{% include 'partial/icon.twig' with { name: 'arrow-right', class: 'c-event-row__arrow' } %}
+	</div>
+</article>

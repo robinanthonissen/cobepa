@@ -76,12 +76,28 @@
             "return_format": "array"
         },
         {
+            "key": "field_cbp_cta_button2",
+            "label": "Tweede knop",
+            "name": "button_2",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_63110a00f480a",
             "label": "Background Image",
             "name": "background_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
+            "instructions": "Optioneel: foto als achtergrond (met donkere overlay).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -132,17 +148,12 @@
                 "id": ""
             },
             "choices": {
-                "bg-primary": "Primary",
-                "bg-secondary": "Secondary",
-                "bg-primary-faded": "Primary Faded",
-                "bg-secondary-faded": "Secondary Faded",
-                "bg-white": "White",
-                "bg-black": "Black",
-                "bg-dark": "Dark",
-                "bg-light": "Light",
-                "bg-transparent": "Transparent"
+                "bg-sand-light": "Zand",
+                "bg-primary": "Groen",
+                "bg-white": "Wit",
+                "bg-cream": "Crème"
             },
-            "default_value": "bg-transparent",
+            "default_value": "bg-sand-light",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -156,7 +167,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/cta"
+                "value": "acf/cta"
             }
         ]
     ],
@@ -169,5 +180,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683747426
+    "modified": 1794310866
 }

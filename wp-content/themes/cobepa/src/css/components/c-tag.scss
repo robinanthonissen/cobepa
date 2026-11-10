@@ -1,0 +1,122 @@
+// ----------------------------------------
+// Tag (discipline · paarden/pony's)
+// ----------------------------------------
+.c-tag {
+	display: inline-block;
+	align-self: flex-start;
+	padding: .4rem 1rem;
+	font-size: 1.2rem;
+	font-weight: $font-weight-bold;
+	line-height: 1.4;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: $primary;
+	background-color: $primary-light;
+
+	&--sand {
+		color: $primary;
+		background-color: $sand;
+	}
+}
+
+// ----------------------------------------
+// Badge (status inschrijving)
+// ----------------------------------------
+.c-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: flex-start;
+	padding: .6rem 1.2rem;
+	font-size: 1.3rem;
+	font-weight: $font-weight-bold;
+	line-height: 1.3;
+	white-space: nowrap;
+
+	&--open {
+		background-color: $status-open-bg;
+		color: $status-open;
+	}
+	&--full {
+		background-color: $status-full-bg;
+		color: $status-full;
+	}
+	&--soon {
+		background-color: $status-soon-bg;
+		color: $status-soon;
+	}
+	&--closed,
+	&--done {
+		background-color: #ECECEC;
+		color: #4A4A4A;
+	}
+}
+
+// ----------------------------------------
+// Chip (filterknop)
+// ----------------------------------------
+.c-chip {
+	display: inline-flex;
+	align-items: center;
+	min-height: 4.4rem;
+	padding: 0 1.8rem;
+	border: 1px solid $border-color-strong;
+	border-radius: $border-radius;
+	background-color: $white;
+	font-size: 1.5rem;
+	font-weight: $font-weight-semibold;
+	color: $text !important;
+	text-decoration: none !important;
+	white-space: nowrap;
+	transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+
+	&:hover {
+		border-color: $primary;
+	}
+
+	&.is-active {
+		background-color: $primary;
+		border-color: $primary;
+		color: $white !important;
+	}
+}
+
+// ----------------------------------------
+// Icon
+// ----------------------------------------
+.c-icon {
+	display: inline-block;
+	flex: none;
+	width: 2rem;
+	height: 2rem;
+	vertical-align: middle;
+
+	&--sm {
+		width: 1.6rem;
+		height: 1.6rem;
+	}
+}
+
+// ----------------------------------------
+// Sectiekop met link rechts
+// ----------------------------------------
+.c-section-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1.6rem 2.4rem;
+	margin-bottom: 3.2rem;
+
+	@include media(lg) {
+		margin-bottom: 4rem;
+	}
+
+	&__title {
+		margin: 0;
+	}
+
+	.overline {
+		margin-bottom: 1.2rem;
+	}
+}

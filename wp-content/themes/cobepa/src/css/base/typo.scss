@@ -199,7 +199,8 @@ ul {
     }
   }
 
-  ul, ol {
+  // Enkel "gewone" lijsten uit de editor, niet de lijsten in componenten
+  ul:not([class]), ol:not([class]) {
     margin: 0 0 1.6rem;
     li {
       padding: .2rem 0 .2rem 2.4rem;
@@ -207,14 +208,14 @@ ul {
     }
   }
 
-  ol {
+  ol:not([class]) {
     padding-left: 2rem;
     li {
       padding-left: .4rem;
     }
   }
 
-  ul li {
+  ul:not([class]) li {
     &::before {
       content: '';
       width: .8rem;
@@ -246,7 +247,7 @@ ul {
   }
 
   .bg-primary, .bg-secondary, .bg-black, .bg-dark {
-    ul li {
+    ul:not([class]) li {
       &::before {
         background-color: $white;
       }

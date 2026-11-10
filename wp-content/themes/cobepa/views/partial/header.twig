@@ -12,7 +12,7 @@
 				<nav class="l-header__nav" aria-label="{{ __('Hoofdmenu', 'cobepa') }}">
 					<ul class="l-header__nav-list">
 						{% for item in main.items %}
-							{% set is_active = item.current or item.current_item_parent or item.current_item_ancestor %}
+							{% set is_active = item.current or item.current_item_parent or item.current_item_ancestor or (current_archive_link and item.link|trim('/', 'right') == current_archive_link) %}
 							<li class="l-header__nav-item {{ item.classes|join(' ') }}{% if item.children %} has-children{% endif %}">
 								<a href="{{ item.link }}"
 									class="l-header__nav-link{% if is_active %} is-active{% endif %}"

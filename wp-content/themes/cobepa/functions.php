@@ -21,3 +21,4 @@ include_once 'functions/login.php';				     // LOGIN
 include_once 'functions/gutenberg.php';			     // GUTENBERG
 include_once 'functions/acf.php';					 // ACF OPTIMIZATIONS
 include_once 'functions/timber.php';				 // INITIALIZE TIMBER
+include_once 'functions/events.php';				 // EVENEMENTEN (na Timber)

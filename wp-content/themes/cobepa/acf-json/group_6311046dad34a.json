@@ -427,6 +427,43 @@
             "placeholder": ""
         },
         {
+            "key": "field_cbp_opt_events_tab",
+            "label": "Evenementen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cbp_opt_events_intro",
+            "label": "Intro overzichtspagina",
+            "name": "events_intro",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Tekst onder de titel op /evenementen/. Leeg = standaardtekst.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
             "key": "field_6373f871e4c17",
             "label": "404",
             "name": "",
@@ -543,5 +580,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1794309594
+    "modified": 1794310866
 }

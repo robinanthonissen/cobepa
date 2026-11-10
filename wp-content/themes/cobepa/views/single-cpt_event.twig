@@ -1,0 +1,196 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% set schedule = event.meta('schedule') %}
+	{% set documents = event.meta('documents') %}
+	{% set registration_link = event.meta('registration_link') %}
+	{% set price = event.meta('price') %}
+	{% set registration_info = event.meta('registration_info') %}
+
+	<article class="p-event" id="post-{{ event.ID }}">
+
+		{% embed 'partial/page-header.twig' with {
+			title: event.title,
+			tag: event.tag_label,
+			breadcrumbs: breadcrumbs,
+			class: 'c-page-header--event'
+		} %}
+			{% block after %}
+				<div class="container">
+					<dl class="p-event__facts">
+						<div class="p-event__fact">
+							<dt>{{ __('Datum', 'cobepa') }}</dt>
+							<dd><time datetime="{{ event.date_iso }}">{{ event.date_long }}</time></dd>
+						</div>
+						{% if event.time_range %}
+							<div class="p-event__fact">
+								<dt>{{ __('Uur', 'cobepa') }}</dt>
+								<dd>{{ event.time_range }}</dd>
+							</div>
+						{% endif %}
+						{% if event.arena_label %}
+							<div class="p-event__fact">
+								<dt>{{ __('Piste', 'cobepa') }}</dt>
+								<dd>{{ event.arena_label }}</dd>
+							</div>
+						{% endif %}
+						{% if event.status %}
+							<div class="p-event__fact">
+								<dt>{{ __('Inschrijving', 'cobepa') }}</dt>
+								<dd>
+									{% if event.status == 'open' and event.registration_deadline_label %}
+										{{ __('Open tot', 'cobepa') }} {{ event.registration_deadline_label }}
+									{% else %}
+										{{ event.status_label }}
+									{% endif %}
+								</dd>
+							</div>
+						{% endif %}
+					</dl>
+				</div>
+			{% endblock %}
+		{% endembed %}
+
+		<div class="p-event__body">
+			<div class="container p-event__layout">
+
+				<div class="p-event__main">
+					{% if event.thumbnail %}
+						<figure class="p-event__image">
+							<img src="{{ event.thumbnail.src('img-large') }}"
+								srcset="{{ event.thumbnail.srcset }}"
+								sizes="(min-width: 1024px) 760px, 100vw"
+								alt="{{ event.thumbnail.alt }}"
+								width="{{ event.thumbnail.width }}" height="{{ event.thumbnail.height }}"
+								loading="eager">
+						</figure>
+					{% endif %}
+
+					{% if event.content|trim %}
+						<section class="p-event__section">
+							<h2 class="p-event__heading">{{ __('Over dit evenement', 'cobepa') }}</h2>
+							<div class="content-wrapper">{{ event.content }}</div>
+						</section>
+					{% endif %}
+
+					{% if schedule %}
+						<section class="p-event__section">
+							<h2 class="p-event__heading">{{ __('Programma', 'cobepa') }}</h2>
+							<ol class="c-schedule">
+								{% for item in schedule %}
+									<li class="c-schedule__item">
+										<span class="c-schedule__time">{{ item.time }}</span>
+										<span class="c-schedule__desc">{{ item.description }}</span>
+									</li>
+								{% endfor %}
+							</ol>
+						</section>
+					{% endif %}
+
+					{% if documents %}
+						<section class="p-event__section">
+							<h2 class="p-event__heading">{{ __('Documenten', 'cobepa') }}</h2>
+							<ul class="c-documents">
+								{% for doc in documents %}
+									<li>
+										{% if doc.file and doc.file.url %}
+											<a class="c-document" href="{{ doc.file.url }}" target="_blank" rel="noopener">
+												{% include 'partial/icon.twig' with { name: 'file', class: 'c-document__icon', stroke: 1.8 } %}
+												<span class="c-document__text">
+													<span class="c-document__title">{{ doc.title }}</span>
+													<span class="c-document__meta">
+														{{ doc.note ?: (doc.file.subtype|upper ~ (doc.file.filesize ? ' · ' ~ (doc.file.filesize / 1024 / 1024)|number_format(1, ',', '.') ~ ' MB' : '')) }}
+													</span>
+												</span>
+												{% include 'partial/icon.twig' with { name: 'download', class: 'c-document__action' } %}
+											</a>
+										{% else %}
+											<div class="c-document is-unavailable">
+												{% include 'partial/icon.twig' with { name: 'file', class: 'c-document__icon', stroke: 1.8 } %}
+												<span class="c-document__text">
+													<span class="c-document__title">{{ doc.title }}</span>
+													<span class="c-document__meta">{{ doc.note ?: __('Nog niet beschikbaar', 'cobepa') }}</span>
+												</span>
+											</div>
+										{% endif %}
+									</li>
+								{% endfor %}
+							</ul>
+						</section>
+					{% endif %}
+				</div>
+
+				<aside class="p-event__aside" aria-label="{{ __('Deelnemen', 'cobepa') }}">
+					<div class="c-event-panel">
+						<h2 class="c-event-panel__title">{{ __('Deelnemen', 'cobepa') }}</h2>
+						<ul class="c-event-panel__facts">
+							<li>
+								{% include 'partial/icon.twig' with { name: 'calendar' } %}
+								<span>{{ event.date_short }}</span>
+							</li>
+							{% if event.time_range %}
+								<li>
+									{% include 'partial/icon.twig' with { name: 'clock' } %}
+									<span>{{ event.time_range }}</span>
+								</li>
+							{% endif %}
+							<li>
+								{% include 'partial/icon.twig' with { name: 'pin' } %}
+								<span>{{ [event.arena_label, 'Rijhal Kraaienhorst']|filter(v => v)|join(' · ') }}</span>
+							</li>
+							{% if price %}
+								<li>
+									{% include 'partial/icon.twig' with { name: 'ticket' } %}
+									<span>{{ price }}</span>
+								</li>
+							{% endif %}
+						</ul>
+
+						{% if event.status %}
+							<span class="c-badge c-badge--{{ event.status }}">{{ event.status_label }}</span>
+						{% endif %}
+
+						{% if event.can_register %}
+							<a class="btn btn-primary btn-block" href="{{ registration_link.url }}" target="{{ registration_link.target ?: '_blank' }}" rel="noopener">
+								{{ registration_link.title ?: __('Schrijf je in', 'cobepa') }}
+								{% include 'partial/icon.twig' with { name: 'arrow-up-right', class: 'btn__icon' } %}
+							</a>
+						{% endif %}
+
+						{% if not event.is_past and event.calendar_link %}
+							<a class="btn btn-light btn-block" href="{{ event.calendar_link }}" target="_blank" rel="noopener">
+								{% include 'partial/icon.twig' with { name: 'calendar-plus' } %}
+								{{ __('Toevoegen aan agenda', 'cobepa') }}
+							</a>
+						{% endif %}
+
+						{% if registration_info %}
+							<p class="c-event-panel__note">{{ registration_info }}</p>
+						{% endif %}
+					</div>
+				</aside>
+
+			</div>
+		</div>
+
+		{% if more %}
+			<section class="p-event__more">
+				<div class="container">
+					<div class="c-section-head">
+						<h2 class="c-section-head__title">{{ __('Andere evenementen', 'cobepa') }}</h2>
+						<a class="c-link-arrow" href="{{ events_archive }}">
+							{{ __('Alle evenementen', 'cobepa') }}
+							{% include 'partial/icon.twig' with { name: 'arrow-right' } %}
+						</a>
+					</div>
+					<div class="c-event-grid">
+						{% for item in more %}
+							{% include 'partial/event-card.twig' with { event: item } %}
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+		{% endif %}
+
+	</article>
+{% endblock %}

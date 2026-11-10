@@ -49,6 +49,38 @@ function my_acf_init() {
 		'keywords'        => array( 'hero', 'header' ),
 	));
 
+	// Aankomende evenementen
+	acf_register_block( array(
+		'name'            => 'events',
+		'title'           => __( 'Evenementen', 'cobepa' ),
+		'description'     => __( 'Aankomende evenementen als kaarten', 'cobepa' ),
+		'render_callback' => 'block_render_callback',
+		'category'        => 'rawd-blocks',
+		'icon'            => 'calendar-alt',
+		'mode'            => 'preview',
+		'supports'        => array(
+			'align'  => false,
+			'anchor' => true,
+		),
+		'keywords'        => array( 'events', 'evenementen', 'kalender' ),
+	));
+
+	// Features (icoon + titel + tekst)
+	acf_register_block( array(
+		'name'            => 'features',
+		'title'           => __( 'Features', 'cobepa' ),
+		'description'     => __( 'Raster met iconen, titels en korte tekst (bv. infrastructuur)', 'cobepa' ),
+		'render_callback' => 'block_render_callback',
+		'category'        => 'rawd-blocks',
+		'icon'            => 'grid-view',
+		'mode'            => 'preview',
+		'supports'        => array(
+			'align'  => false,
+			'anchor' => true,
+		),
+		'keywords'        => array( 'features', 'infrastructuur', 'iconen' ),
+	));
+
 	acf_register_block( array(
 		'name'            => 'contact',
 		'title'           => __( 'Contact', 'rawd' ),
@@ -158,7 +190,6 @@ function block_render_callback( $block, $content = '', $is_preview = false ) {
 	//$content['parent'] = $parent;
 	$context['is_preview'] = $is_preview;
 	$slug = str_replace('acf/', '', $block['name']);
-	error_log($slug);
 	Timber::render( "views/blocks/block-{$slug}.twig", $context );
 }
 

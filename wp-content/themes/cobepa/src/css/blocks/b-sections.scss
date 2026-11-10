@@ -1,0 +1,253 @@
+// ----------------------------------------
+// Gedeelde sectie-afstanden voor blocks
+// ----------------------------------------
+@mixin section-padding {
+	padding-top: 7.2rem;
+	padding-bottom: 7.2rem;
+
+	@include media(lg) {
+		padding-top: 10.4rem;
+		padding-bottom: 10.4rem;
+	}
+}
+
+// Hero met "eerstvolgend evenement" gevolgd door een block: extra ruimte boven
+.b-hero.has-next-event + * {
+	padding-top: 8rem;
+
+	@include media(lg) {
+		padding-top: 11.2rem;
+	}
+}
+
+// ----------------------------------------
+// Events
+// ----------------------------------------
+.b-events {
+	@include section-padding;
+
+	&__empty {
+		padding: 4rem 2.4rem;
+		text-align: center;
+		border: 1px dashed $border-color-strong;
+		background-color: $white;
+		color: $text-muted;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+// ----------------------------------------
+// Features
+// ----------------------------------------
+.b-features {
+	@include section-padding;
+
+	&__head {
+		max-width: 72rem;
+		margin-bottom: 4rem;
+
+		@include media(lg) {
+			margin-bottom: 4.8rem;
+		}
+	}
+
+	&__title {
+		margin: 0;
+	}
+
+	&__intro {
+		margin: 1.6rem 0 0;
+		font-size: 1.8rem;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1px;
+		background-color: $border-color;
+		border: 1px solid $border-color;
+
+		@include media(sm) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		@include media(lg) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		gap: 1.4rem;
+		padding: 3.2rem 2.8rem;
+		background-color: $white;
+
+		@include media(lg) {
+			padding: 3.6rem 3.2rem;
+		}
+	}
+
+	&__icon {
+		width: 4rem;
+		height: 4rem;
+		color: $primary;
+	}
+
+	&__item-title {
+		margin: 0;
+		font-size: 2.6rem;
+
+		@include media(lg) {
+			font-size: 2.8rem;
+		}
+	}
+
+	&__item-text {
+		margin: 0;
+		font-size: 1.6rem;
+		color: $text-muted;
+	}
+
+	&__footer {
+		margin-top: 4rem;
+	}
+
+	// Op groen: lijnen en vlakken in groen
+	&.bg-primary &__grid {
+		background-color: rgba($white, .18);
+		border-color: rgba($white, .18);
+	}
+	&.bg-primary &__item {
+		background-color: $primary;
+	}
+	&.bg-primary &__icon {
+		color: $sand;
+	}
+	&.bg-primary &__item-text {
+		color: $text-on-primary;
+	}
+	&.bg-cream &__item {
+		background-color: $cream;
+	}
+}
+
+// ----------------------------------------
+// Image + tekst
+// ----------------------------------------
+.b-image-text {
+	@include section-padding;
+
+	&__inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 4rem 6.4rem;
+	}
+
+	&--reverse &__inner {
+		flex-direction: row-reverse;
+	}
+
+	&--full {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	&--full &__content {
+		padding: 4.8rem 2rem;
+
+		@include media(md) {
+			padding: 6.4rem;
+		}
+	}
+
+	&__media {
+		flex: 1 1 46rem;
+		min-width: 0;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		background-color: $sand-light;
+	}
+
+	&__content {
+		flex: 1 1 42rem;
+		min-width: 0;
+	}
+
+	&__title {
+		margin-bottom: 2.4rem;
+	}
+
+	&__text {
+		margin-bottom: 3.2rem;
+		color: $text-body;
+	}
+
+	&.bg-primary &__text {
+		color: $text-on-primary;
+	}
+}
+
+// ----------------------------------------
+// CTA
+// ----------------------------------------
+.b-cta {
+	position: relative;
+	overflow: hidden;
+	@include section-padding;
+
+	&__image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__shade {
+		position: absolute;
+		inset: 0;
+		background-color: rgba($primary-dark, .72);
+	}
+
+	&__inner {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 3.2rem;
+	}
+
+	&__content {
+		max-width: 68rem;
+	}
+
+	&__title {
+		margin: 0;
+		color: $primary;
+	}
+
+	&.bg-primary &__title {
+		color: $white;
+	}
+
+	&__text {
+		margin: 1.6rem 0 0;
+		font-size: 1.8rem;
+		color: $text-body;
+	}
+
+	&.bg-primary &__text {
+		color: $text-on-primary;
+	}
+}

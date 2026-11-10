@@ -42,11 +42,10 @@ class themeSite extends Timber\Site {
 	}
 
 	public function add_to_context( $context ) {
-		$context['main'] = new \Timber\Menu( 'main' );
-		$context['footer_col_1'] = new \Timber\Menu( 'footer_col_1' );
-		$context['footer_col_2'] = new \Timber\Menu( 'footer_col_2' );
-		$context['footer_col_3'] = new \Timber\Menu( 'footer_col_3' );
-		$context['legal'] = new \Timber\Menu( 'legal' );
+		// Enkel menu's voor toegewezen locaties: Timber valt anders terug op het eerste menu
+		foreach ( array( 'main', 'footer_col_1', 'footer_col_2', 'footer_col_3', 'legal' ) as $location ) {
+			$context[ $location ] = has_nav_menu( $location ) ? new \Timber\Menu( $location ) : null;
+		}
 		
 		$context['stuff'] = 'This is a test value'; // add me anywhere in a twig template to show me: {{ stuff }}
 		$context['options'] = get_fields('option'); // get all ACF option fields -> example: "{{ options.analytics }}", you can use them globaly on every page

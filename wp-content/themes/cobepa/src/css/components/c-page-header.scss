@@ -1,0 +1,207 @@
+// ----------------------------------------
+// Groene paginakop
+// ----------------------------------------
+.c-page-header {
+	background-color: $primary;
+	color: $white;
+	padding: 4.8rem 0 5.6rem;
+
+	@include media(lg) {
+		padding: 7.2rem 0 8rem;
+	}
+
+	&--tabs,
+	&--event {
+		padding-bottom: 0 !important;
+	}
+
+	&__title {
+		margin: 0;
+		max-width: 96rem;
+		color: $white;
+	}
+
+	.c-tag {
+		margin-bottom: 2rem;
+	}
+
+	&__intro {
+		max-width: 64rem;
+		margin: 2rem 0 0;
+		font-size: 1.7rem;
+		color: $text-on-primary;
+
+		@include media(lg) {
+			font-size: 1.8rem;
+		}
+	}
+
+	&--tabs &__intro {
+		margin-bottom: 4rem;
+	}
+}
+
+// ----------------------------------------
+// Kruimelpad
+// ----------------------------------------
+.c-breadcrumbs {
+	margin-bottom: 2rem;
+	font-size: 1.4rem;
+	color: #BFD2CE;
+
+	ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: .4rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: inline-flex;
+		align-items: center;
+		gap: .4rem;
+
+		&:not(:last-child)::after {
+			content: '/';
+		}
+	}
+
+	a {
+		color: #BFD2CE !important;
+
+		&:hover {
+			color: $white !important;
+		}
+	}
+
+	[aria-current] {
+		color: $white;
+	}
+}
+
+// ----------------------------------------
+// Tabs aankomend / afgelopen (onderaan de paginakop)
+// ----------------------------------------
+.c-period-tabs {
+	display: inline-flex;
+	border: 1px solid rgba($white, .4);
+	border-bottom: 0;
+
+	&__tab {
+		display: inline-flex;
+		align-items: center;
+		min-height: 4.8rem;
+		padding: 0 2.4rem;
+		font-size: 1.5rem;
+		font-weight: $font-weight-semibold;
+		color: $white !important;
+		text-decoration: none !important;
+		transition: background-color .2s ease;
+
+		&:hover {
+			background-color: rgba($white, .1);
+		}
+
+		&.is-active {
+			background-color: $white;
+			color: $primary !important;
+		}
+
+		&:focus-visible {
+			outline-color: $white;
+			outline-offset: -3px;
+		}
+	}
+}
+
+// ----------------------------------------
+// Filterbalk
+// ----------------------------------------
+.c-filters {
+	background-color: $white;
+	border-bottom: 1px solid $border-color;
+
+	&__inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1.6rem 4.8rem;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	&__group {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	&__label {
+		width: 8.4rem;
+		font-size: 1.4rem;
+		font-weight: $font-weight-semibold;
+		color: $text-muted;
+	}
+
+	&__options {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+}
+
+// ----------------------------------------
+// Paginering
+// ----------------------------------------
+.c-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 1.2rem;
+	margin-top: 5.6rem;
+
+	&__pages {
+		display: flex;
+		gap: .6rem;
+	}
+
+	&__page,
+	&__step,
+	&__dots {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: .8rem;
+		min-width: 4.8rem;
+		min-height: 4.8rem;
+		padding: 0 1.2rem;
+		font-weight: $font-weight-semibold;
+		text-decoration: none !important;
+	}
+
+	&__page,
+	&__step {
+		border: 1px solid $border-color-strong;
+		background-color: $white;
+		color: $text !important;
+
+		&:hover {
+			border-color: $primary;
+			color: $primary !important;
+		}
+	}
+
+	&__page.is-current {
+		background-color: $primary;
+		border-color: $primary;
+		color: $white !important;
+	}
+
+	&__dots {
+		color: $text-muted;
+	}
+}

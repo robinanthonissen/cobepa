@@ -1,0 +1,443 @@
+{
+    "key": "group_cobepa_event",
+    "title": "Evenement",
+    "fields": [
+        {
+            "key": "field_cbp_ev_tab_when",
+            "label": "Datum & locatie",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cbp_ev_date",
+            "label": "Datum",
+            "name": "event_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Eerste (of enige) dag van het evenement.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_cbp_ev_end_date",
+            "label": "Einddatum",
+            "name": "event_end_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Enkel invullen voor een meerdaags evenement.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_cbp_ev_time_start",
+            "label": "Startuur",
+            "name": "time_start",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i"
+        },
+        {
+            "key": "field_cbp_ev_time_end",
+            "label": "Einduur",
+            "name": "time_end",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i"
+        },
+        {
+            "key": "field_cbp_ev_arena",
+            "label": "Piste",
+            "name": "arena",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "binnenpiste": "Binnenpiste",
+                "buitenpiste": "Buitenpiste",
+                "beide": "Binnen- en buitenpiste"
+            },
+            "default_value": "binnenpiste",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_cbp_ev_tab_reg",
+            "label": "Inschrijving",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cbp_ev_reg_status",
+            "label": "Status inschrijving",
+            "name": "registration_status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Na de datum van het evenement wordt automatisch \"Afgelopen\" getoond.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "": "Geen inschrijving nodig",
+                "soon": "Binnenkort",
+                "open": "Inschrijven open",
+                "full": "Volzet",
+                "closed": "Inschrijvingen gesloten"
+            },
+            "default_value": "soon",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_cbp_ev_reg_deadline",
+            "label": "Inschrijven tot",
+            "name": "registration_deadline",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Na deze datum toont de site automatisch \"Inschrijvingen gesloten\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_cbp_ev_price",
+            "label": "Prijs",
+            "name": "price",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "bv. € 25 per start",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cbp_ev_reg_link",
+            "label": "Inschrijflink",
+            "name": "registration_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Link naar het inschrijfplatform of -formulier.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cbp_ev_reg_info",
+            "label": "Extra info inschrijving",
+            "name": "registration_info",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "bv. Inschrijven via Equi Events",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cbp_ev_tab_prog",
+            "label": "Programma",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cbp_ev_schedule",
+            "label": "Programma",
+            "name": "schedule",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Onderdeel toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "pagination": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cbp_ev_sch_time",
+                    "label": "Uur",
+                    "name": "time",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "H:i",
+                    "return_format": "H:i",
+                    "parent_repeater": "field_cbp_ev_schedule"
+                },
+                {
+                    "key": "field_cbp_ev_sch_desc",
+                    "label": "Omschrijving",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "bv. Proef 1 – 80 cm",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_cbp_ev_schedule"
+                }
+            ]
+        },
+        {
+            "key": "field_cbp_ev_tab_docs",
+            "label": "Documenten",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cbp_ev_documents",
+            "label": "Documenten",
+            "name": "documents",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Vraagprogramma, startlijsten, uitslagen… Zonder bestand wordt de regel getoond als \"nog niet beschikbaar\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Document toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_cbp_ev_doc_title",
+            "pagination": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cbp_ev_doc_title",
+                    "label": "Titel",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "bv. Startlijst",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_cbp_ev_documents"
+                },
+                {
+                    "key": "field_cbp_ev_doc_file",
+                    "label": "Bestand",
+                    "name": "file",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_cbp_ev_documents"
+                },
+                {
+                    "key": "field_cbp_ev_doc_note",
+                    "label": "Opmerking",
+                    "name": "note",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "bv. Beschikbaar vanaf 20/11",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_cbp_ev_documents"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "cpt_event"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1794310749
+}
