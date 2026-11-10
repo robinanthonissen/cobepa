@@ -1,0 +1,23 @@
+{#
+/**
+ * Block Name: CTA Block
+ *
+ */
+#}
+<section id="{{ block.anchor ? block.anchor : 'block-cta-' ~ block.id }}" class="b-cta">
+    
+    <div class="b-cta__inner lazy {{ fields.background_color }}" data-aos="fade-up"  data-src="{{ Image(fields.background_image).src }}"{#{ Image(fields.image).src }}"#} {% if is_preview %}style="background-image: url('{{ Image(fields.background_image).src }}');"{% endif %}>
+        <div class="container">
+            {% if fields.title %}
+                <h2>{{ fields.title }}</h2>
+            {% endif %}
+            {% if fields.text %}
+                <div class="text-500">{{ fields.text }}</div>
+            {% endif %}
+            {% if fields.button %}
+                <a href="{{ fields.button.url }}" class="btn btn-primary btn-lg">{{ fields.button.title }}</a>
+            {% endif %}
+        </div>
+    </div>
+
+</section>

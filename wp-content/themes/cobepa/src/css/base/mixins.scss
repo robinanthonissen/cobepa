@@ -1,0 +1,216 @@
+@mixin media($breakpoint, $type: min) {
+  @each $key, $size in $media {
+    @if $breakpoint == $key {
+      @if $type == min {
+        @media screen and (min-width: $size) {
+          @content;
+        }
+      } @else {
+        @media screen and (max-width: $size - 1) {
+          @content;
+        }
+      }
+
+    }
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: var(--grid-container);
+  margin: 0 auto;
+  padding-left: gap(4);
+  padding-right: gap(4);
+
+  @include media(md) {
+    padding-left: gap(3);
+    padding-right: gap(3);
+  }
+}
+
+
+@mixin label-12 {
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+@mixin label-14 {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+}
+
+@mixin label-14-caps {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin label-16 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+@mixin label-16-caps {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin label-18 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+
+@mixin label-20 {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+
+
+@mixin text-12 {
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+}
+
+@mixin text-14 {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+}
+
+@mixin text-16 {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+@mixin text-18 {
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+}
+
+@mixin text-18-bold {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+}
+
+@mixin text-20 {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+@mixin text-20-bold {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+
+
+@mixin color-white {
+  color: var(--color-white);
+}
+
+@mixin color-black {
+  color: var(--color-black);
+}
+
+@mixin color-yellow {
+  color: var(--color-yellow);
+}
+
+@mixin color-red {
+  color: var(--color-red);
+}
+
+@mixin color-gray-10 {
+  color: var(--color-gray-10);
+}
+
+@mixin color-gray-30 {
+  color: var(--color-gray-30);
+}
+
+@mixin color-gray-50 {
+  color: var(--color-gray-50);
+}
+
+@mixin color-gray-70 {
+  color: var(--color-gray-70);
+}
+
+@mixin color-gray-90 {
+  color: var(--color-gray-90);
+}
+
+@mixin h1 {
+  font-family: var(--font-serif), var(--font-fallback);
+  font-weight: 400;
+  margin: 0;
+
+  font-size: 34px;
+  line-height: 40px;
+
+  @include media(lg) {
+    font-size: 60px;
+    line-height: 72px;
+  }
+}
+
+@mixin h2 {
+  font-family: var(--font-serif), var(--font-fallback);
+  font-weight: 400;
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 32px;
+
+  @include media(lg) {
+    font-size: 54px;
+    line-height: 64px;
+  }
+}
+
+@mixin h3 {
+  font-family: var(--font-serif), var(--font-fallback);
+  font-weight: 400;
+  margin: 0;
+
+  font-size: 26px;
+  line-height: 32px;
+
+  @include media(lg) {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+@mixin h4 {
+  font-family: var(--font-serif), var(--font-fallback);
+  font-weight: 400;
+  margin: 0;
+
+  font-size: 22px;
+  line-height: 32px;
+
+  @include media(lg) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@mixin h5 {
+  font-family: var(--font-serif), var(--font-fallback);
+  font-weight: 400;
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 32px;
+}

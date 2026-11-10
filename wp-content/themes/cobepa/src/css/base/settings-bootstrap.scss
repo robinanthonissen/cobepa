@@ -1,0 +1,257 @@
+// Colors
+$theme-colors: (
+  "primary":         $primary,
+  "secondary":       $secondary,
+  "success":         $success,
+  "info":            $info,
+  "warning":         $warning,
+  "danger":          $danger,
+  "light":           $light,
+  "dark":            $dark,
+  "primary-faded":   $primary-faded,
+  "secondary-faded": $secondary-faded
+);
+
+$utilities-text-colors:      $theme-colors; 
+$utilities-border-colors:    $theme-colors;
+$utilities-bg-colors:        $theme-colors;
+
+$media: (
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1440px,
+  3xl: 1920px,
+);
+
+// Grid settings
+$spacers: (
+    auto: auto,
+    10: 10px,
+    15: 15px,
+    20: 20px,
+    25: 25px,
+    30: 30px,
+    35: 35px,
+    40: 40px,
+    45: 45px,
+    50: 50px,
+    55: 55px,
+    60: 60px,
+    65: 65px,
+    70: 70px,
+    75: 75px,
+    80: 80px,
+    90: 90px,
+    100: 100px,
+    110: 110px,
+    120: 120px,
+    130: 130px,
+    140: 140px,
+    150: 150px,
+    160: 160px,
+    180: 180px,
+    200: 200px,
+    250: 250px
+);
+$spacers-8-grid: (
+    8: 8px,
+    16: 16px,
+    24: 24px,
+    32: 32px,
+    40: 40px,
+    48: 48px,
+    56: 56px,
+    64: 64px,
+    72: 72px,
+    80: 80px,
+    88: 88px,
+    96: 96px,
+    104: 104px,
+    112: 112px,
+    120: 120px,
+    128: 128px,
+    136: 136px,
+    144: 144px,
+    152: 152px,
+    160: 160px
+);
+
+$spacers: map-merge($spacers, $spacers-8-grid);
+$gutters: $spacers;
+$negative-spacers: $spacers; //TODO: make negative spacers
+
+$utilities: map-merge(
+    $utilities, 
+    (
+        "color": map-merge(
+            map-get($utilities, "color"),
+            (
+                css-var: false,
+                values: map-merge(
+                    map-get(map-get($utilities, "color"), "values"),
+                    $utilities-text-colors
+                )
+            )
+        ),
+        "background-color": map-merge(
+            map-get($utilities, "background-color"),
+            (
+                css-var: false,
+                values: map-merge(
+                    map-get(map-get($utilities, "background-color"), "values"),
+                    $utilities-bg-colors
+                )
+            )
+        ),
+        "margin": map-merge(
+            map-get($utilities, "margin"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "margin"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "margin-x": map-merge(
+            map-get($utilities, "margin-x"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "margin-x"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "margin-y": map-merge(
+            map-get($utilities, "margin-y"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "margin-y"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "margin-top": map-merge(
+            map-get($utilities, "margin-top"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "margin-top"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "margin-bottom": map-merge(
+            map-get($utilities, "margin-bottom"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "margin-bottom"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "margin-end": map-merge(
+            map-get($utilities, "margin-end"),
+            (
+                class: mr,
+                values: map-merge(
+                    map-get(map-get($utilities, "margin-end"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "margin-start": map-merge(
+            map-get($utilities, "margin-start"),
+            (
+                class: ml,
+                values: map-merge(
+                    map-get(map-get($utilities, "margin-start"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding": map-merge(
+            map-get($utilities, "padding"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "padding"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding-x": map-merge(
+            map-get($utilities, "padding-x"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "padding-x"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding-y": map-merge(
+            map-get($utilities, "padding-y"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "padding-y"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding-top": map-merge(
+            map-get($utilities, "padding-top"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "padding-top"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding-bottom": map-merge(
+            map-get($utilities, "padding-bottom"),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, "padding-bottom"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding-end": map-merge(
+            map-get($utilities, "padding-end"),
+            (
+                class: pr,
+                values: map-merge(
+                    map-get(map-get($utilities, "padding-end"), "values"),
+                    $spacers
+                )
+            )
+        ),
+        "padding-start": map-merge(
+            map-get($utilities, "padding-start"),
+            (
+                class: pl,
+                values: map-merge(
+                    map-get(map-get($utilities, "padding-start"), "values"),
+                    $spacers
+                )
+            )
+        )
+    )
+);
+
+$grid-breakpoints: (
+    xxs: 0,
+    xs: 360px,
+    sm: 576px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1440px
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1170px,
+    xxl: 1280px
+);

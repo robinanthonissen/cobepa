@@ -1,0 +1,249 @@
+.l-header {
+    height: $header-height-mobile;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    transition: all .3s ease;
+
+    @include media(md){
+        height: $header-height-tablet;
+    }
+    @include media(lg){
+        height: $header-height;
+    }
+
+    &.not-top{
+        background-color: $blackhead;
+        position: fixed;
+        transform: translateY(-100%);
+    }
+    &.not-top.not-top-vissible{
+        transform: translateY(0);
+    }
+    > .container{
+        height: 100%;
+    }
+    > .container > .row{
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+	
+    &__logo{
+        flex-basis: 13.6rem;
+        max-width: 13.6rem;
+        @include media(md){
+            flex-basis: 16rem;
+            max-width: 16rem;
+        }
+        @include media(2xl){
+            flex-basis: 18.4rem;
+            max-width: 18.4rem;
+        }
+
+        .logo{
+            width: 100%; //5.6rem;
+            height: auto;
+        }
+        .logo-black{
+            display: none;
+        }
+    }
+    &__nav{
+        display: none;
+        flex-grow: 1;
+        flex-basis: 0;
+        align-items: center;
+        @include media(lg){
+            display: flex;
+        }
+
+        &-item{
+
+        }
+        &-link{
+            padding: .6rem 0;
+            margin-left: 3.2rem;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            transition: all .3s ease;
+            svg, i{
+                margin-left: .8rem;
+                transition: all .3s ease;
+            }
+            &:after{
+                width: 0;
+                height: 2px;
+                background-color: $secondary;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                transition: width .3s ease;
+            }
+            &:hover{
+                text-decoration: none;
+                color: $primary;
+                &:after{
+                    content: "";
+                    width: 100%;
+                    transition: width 0.5s ease;
+                }
+            }
+            &:hover{
+                svg,
+                i{
+                    transform: rotate(-180deg);
+                    //fill: var(--color-blue);
+                }
+                .l-header__nav-dropdown{
+                    visibility: visible;
+                    opacity: 1;
+                    height: auto;
+                }
+            }
+            a{
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+    
+        }
+        &-dropdown{
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translate(0, 100%);
+            transition: all .3s ease;
+            background-color: $white;
+            color: $black;
+            padding: .8rem 0;
+            z-index: 1;
+            &-link{
+                padding: .8rem 1.6rem;
+                width: 100%;
+                display: inline-block;
+                &:hover{
+                    text-decoration: none;
+                    background-color: $gray-900;
+                }
+            }
+        }
+    }
+    &__contact.btn{
+        display: none;
+        @include media(lg){
+            display: block;
+        }
+    }
+    &__toggle.btn{
+        /*height: 4rem;
+        width: 4rem;
+        background-color: $primary;
+        border: 0px solid $white;
+        padding: 0.8rem !important;
+        font-size: 2.4rem;
+        color: $white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .3s ease;
+
+        &:hover{
+            //border-color: $primary;
+            //color: $primary;
+            background-color: $primary-faded;
+        }*/
+        //width: 3.6rem;
+        //height: 3.6rem;
+        flex-basis: 3.9rem;
+        padding: 0 1.5rem 0 0;
+        transition: all .3s ease;
+        cursor: pointer;
+
+        &:hover{
+
+            .bar:nth-of-type(1),
+            .bar:nth-of-type(3){
+                margin-left: 1rem;
+            }
+            .bar:nth-of-type(2){
+                margin-left: 0 !important;
+            }
+        }
+        @include media(lg){
+            display: none !important;
+        }
+
+        .menu__icon{
+            width: 2.4rem;
+            height: 2.4rem;
+            @include media(md){
+                width: 3.2rem;
+                height: 3.2rem;
+            }
+            
+            .bar{
+                height: .1rem;
+                background: $primary;
+                transition: all .3s ease;
+
+                &:not(:last-of-type){
+                    margin-bottom: .7rem;
+
+                    @include media(md){
+                        margin-bottom: 1.2rem;
+                    }
+                }
+                &:nth-of-type(2){
+                    margin-left: 1rem;
+                }
+                &:nth-of-type(3){
+                    //margin-left: 1rem;
+                }
+            }
+        }
+    }
+    &__socials{
+        display: none;
+        font-size: 2.4rem;
+        margin-right: 2.4rem;
+
+        @include media(xl){
+            display: block;
+        }
+    }
+    &__social{
+        margin-left: 1.6rem;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+
+    &.collapsed{
+        position: fixed;
+        top: 0;
+        box-shadow: $box-shadow;
+
+        @include media(lg){
+            height: $header-height-collapsed;
+        }
+
+        .l-header__logo{
+            flex-basis: 9.6rem;
+            max-width: 9.6rem;
+            @include media(lg){
+                flex-basis: 12rem;
+                max-width: 12rem;
+            }
+        }
+    }
+}

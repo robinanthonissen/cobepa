@@ -1,0 +1,23 @@
+{#
+/**
+ * Block Name: Editor Block
+ *
+ */
+#}
+<section id="{{ block.anchor ? block.anchor : 'block-editor-' ~ block.id }}" class="b-editor">
+    
+    <div class="b-editor__inner {{ fields.background_color }}" data-aos="fade-up">
+        <div class="{% if not fields.full_width %}container{% endif %} {% if fields.small %}small-container{% endif %}">
+            {% if fields.title %}
+                <h2>{{ fields.title }}</h2>
+            {% endif %}
+            {% if fields.content %}
+                <div class="text-500">{{ fields.content }}</div>
+            {% endif %}
+            {% if fields.button %}
+                <a href="{{ fields.button.url }}" class="btn btn-primary lg">{{ fields.button.title }}</a>
+            {% endif %}
+        </div>
+    </div>
+
+</section>

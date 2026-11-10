@@ -1,0 +1,8 @@
+div[class*=" wp-block-acf-"]:not(.is-selected) {
+    /*@import url('./../../../dist/index.css');*/
+}
+
+.wp-block{
+    width: 90%;
+    max-width: 100%;
+}

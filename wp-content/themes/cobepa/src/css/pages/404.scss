@@ -1,0 +1,37 @@
+.error404 {
+	& .error-container {
+		background-color: white;
+		position: relative;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	& .error-container__inner {
+		width: 90%;
+		max-width: 70rem;
+		z-index: 2;
+		position: relative;
+		text-align: center;
+		& h1 {
+     		color: black;
+			margin-bottom: 2.4rem;
+			//font-size: 3.4rem;
+			//line-height: 4.2rem;
+			@media (--bp-md) {
+				//font-size: 5rem;
+				//line-height: 6rem;
+				margin-bottom: 3.2rem;
+			}
+		}
+		/*& a {
+			color: white;
+		}*/
+	}
+	& .error-container__image {
+		background-position: 50%;
+		opacity: .2;
+		//display: none;
+	}
+}

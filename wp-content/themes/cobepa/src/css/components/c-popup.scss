@@ -1,0 +1,44 @@
+.c-popup {
+	$self: &;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms, visibility 0s 400ms;
+  pointer-events: none;
+	#{$self}__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 3;
+		pointer-events: auto;
+	}
+  #{$self}__inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  &.is-active {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 400ms;
+  }
+}
+
+.c-popup-is-active {
+  overflow: hidden;
+  & body {
+    overflow: visible;
+    height: 100%;
+  }
+}

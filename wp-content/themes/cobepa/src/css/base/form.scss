@@ -1,0 +1,40 @@
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+textarea {
+  height: 5rem;
+  background: white;
+  border: 2px solid var(--color-grey);
+  border-radius: var(--border-radius-small);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: var(--color-black);
+  font-size: 1.6rem;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  -webkit-appearance: none;
+  transition: border-color .3s ease;
+  &:focus {
+    border-color: var(--color-black);
+  }
+}
+
+textarea {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  min-height: 10rem;
+}
+
+abbr.required {
+  color: red;
+  font-size: 1.4rem;
+}
+
+label {
+  font-size: 1.4rem;
+  margin-bottom: .5rem;
+  display: block;
+}

@@ -1,0 +1,43 @@
+{
+  "name": "starter-theme",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel watch",
+    "build": "parcel build"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.11.0",
+    "parcel": "^2.11.0",
+    "postcss": "^8.2.14",
+    "postcss-import": "^14.1.0",
+    "postcss-mixins": "^9.0.2",
+    "postcss-nested": "^5.0.6",
+    "postcss-preset-env": "^7.6.0",
+    "sass": "^1.70.0"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "blazy": "^1.8.2",
+    "bootstrap": "^5.2.3",
+    "bowser": "^2.11.0",
+    "nodelist-foreach-polyfill": "^1.2.0",
+    "swiper": "^8.1.5",
+    "viewprt": "^4.2.0"
+  },
+  "targets": {
+    "frontend": {
+      "distDir": "dist",
+      "source": "src/index.js"
+    },
+    "backend": {
+      "distDir": "dist",
+      "source": "src/index-admin.js"
+    }
+  }
+}

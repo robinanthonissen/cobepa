@@ -1,0 +1,104 @@
+<footer class="l-footer">
+<div class="c-footer" id="footer">
+	<div class="c-footer__nav py-30 py-md-50">
+		<div class="container">
+			<div class="row">
+				{#<div class="col-3">
+					<div class="c-footer__logo">
+						<img src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== data-src="{{theme.link}}/src/img/logo_parkhappening_wit.png" alt="logo" class="lazy">
+					</div>
+				</div>#}
+				<div class="col-12 col-lg-5" data-aos="fade-up">
+					<h3 class="text-primary-faded">{{ site.title }}</h3>
+					<div class="c-footer__text mt-24 mb-20">
+						{% if options.address or options.zip_code or options.city %}
+							<a href="#">{{ options.address }}<br>{{ options.zip_code }} - {{ options.city }}</a>
+						{% endif %}
+						{% if options.phone %}
+							<a href="callto:{{ options.phone }}">{{ options.phone }}</a>
+						{% endif %}
+						{% if options.email %}
+							<a href="mailto:{{ options.email }}">{{ options.email }}</a>
+						{% endif %}
+						{% if options.vat %}
+							<a href="#">{{ options.vat }}</a>
+						{% endif %}
+					</div>
+					{% include 'partial/socials.twig' %}
+				</div>
+				{% if footer_col_1.items %}
+					<div class="col-6 col-md-4 col-lg-2 mr-lg-0 ml-lg-auto" data-aos="fade-up">
+						<nav>
+							<ul class="c-footer__nav-list my-10 my-lg-30">
+								{% for item in footer_col_1.items %}
+									<li class="c-footer__nav-list-item {{ item.classes|join(' ') }}">
+										<a href="{{ item.link }}" class="c-footer__link text-small">{{ item.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</nav>
+					</div>
+				{% endif %}
+				{% if footer_col_2.items %}
+					<div class="col-6 col-md-4 col-lg-2 mr-lg-0 ml-lg-auto" data-aos="fade-up">
+						<nav>
+							<ul class="c-footer__nav-list my-10 my-lg-30">
+								{% for item in footer_col_2.items %}
+									<li class="c-footer__nav-list-item {{ item.classes|join(' ') }}">
+										<a href="{{ item.link }}" class="c-footer__link text-small">{{ item.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</nav>
+					</div>
+				{% endif %}
+				{% if footer_col_3.items %}
+					<div class="col-6 col-md-4 col-lg-2 mr-lg-0 ml-lg-auto" data-aos="fade-up">
+						<nav>
+							<ul class="c-footer__nav-list my-10 my-lg-30">
+								{% for item in footer_col_3.items %}
+									<li class="c-footer__nav-list-item {{ item.classes|join(' ') }}">
+										<a href="{{ item.link }}" class="c-footer__link text-small">{{ item.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</nav>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<div class="c-footer__privacy">
+		<div class="container">
+			<div class="row">
+				<div class="text-300 c-footer__copyright">
+					© {{ 'now' | date('Y') }} 
+					<a href="{{ site.link }}">{{ site.title }}</a>
+				</div>
+				<nav>
+					{% if legal %}
+						{% for item in legal.items %}
+							<a href="{{ item.link }}" class="text-300">{{ item.title }}</a>
+						{% endfor %}
+					{% endif %}
+				</nav>
+				<div class="row c-footer__created">
+					<span>site created by</span>
+					<a href="https://rawd.be/" target="_blank">
+						<img class="created-logo" src="{{ theme.link }}/src/img/rawd/logo-rawd-white.svg">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</footer>
+
+{#<div class="c-footer__copyright">
+	<div class="container">
+		<div class="c-footer__copyright-inner">
+			© {{"now"|date("Y")}} Copyright: <a href="{{site.link}}">{{site.title}}</a> | Created by: <a href="https://rawd.be" target="_blank">RAWD</a>
+		</div>
+	</div>
+</div>#}

@@ -1,0 +1,20 @@
+.c-tabs {
+	$self: &;
+	#{$self}__nav {
+		display: flex;
+	}
+  #{$self}__tab {
+    flex: 0 1 auto;
+    position: relative;
+    cursor: pointer;
+    &.is-active {
+      color: red;
+    }
+  }
+	#{$self}__content {
+		display: none;
+		&.is-active {
+			display: block;
+		}
+	}
+}

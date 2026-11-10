@@ -1,0 +1,90 @@
+.b-hero{
+    
+    
+    &__image{
+        min-height: 100vh;
+        min-height: calc(var(--vh, 1vh) * 100);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        height: 100%;
+        align-items: flex-end;
+
+        &.small{
+            min-height: 480px;
+            height: 60vh;
+
+            @include media(lg){
+                //min-height: 50vh;
+            }
+            .text-600{
+                margin: 0;
+            }
+            .row{
+                justify-content: flex-start !important;
+            }
+        }
+    }
+
+    &__content{
+        position: relative;
+        flex-basis: 100%;
+        max-width: 100%;
+
+        > .container{
+            height: 100%;
+        }
+        > .container > .row{
+            height: 100%;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        h1{
+            //margin-bottom: 1.6rem;
+            color: $gray-500;
+        }
+        &-inner{
+            padding: 12rem 0 4rem;
+            @include media(md){
+                padding: 12rem 0 6rem;
+            }
+            @include media(lg){
+                padding: 14rem 0 8rem;
+            }
+        }
+    }
+
+    &__filter{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(249, 247, 243, .8);
+    }
+
+    h1, .h1 {
+        margin-bottom: 2.4rem;
+        @include media(lg){
+            font-size: 10.4rem;
+            margin-bottom: 3.2rem;
+        }
+        @include media(xl){
+            font-size: 12rem;
+        }
+    }
+    .text-600{
+        line-height: 1.21;
+        color: $gray-700;
+        max-width: 72rem;
+        margin: 0 auto;
+        color: $gray-500;
+        @include media(lg){
+            font-size: 2.4rem;
+        }
+        @include media(xl){
+            font-size: 2.8rem;
+        }
+    }
+}

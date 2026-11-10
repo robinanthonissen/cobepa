@@ -1,0 +1,305 @@
+.c-menu {
+	$self: &;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+	background-color: transparent; //rgba(0,0,0, .8);
+  transition: all .8s ease;
+  &__image{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    //background-image: url('https://www.molenhofbrecht.be/sites/all/themes/gavias_laikafood/images/img1.jpg');
+    background-size: cover;
+    background-position: center center;
+    transform: translate(-100%, 0);
+    transition: all .6s ease;
+    //visibility: hidden;
+    //opacity: 0;
+
+    @include media(md){
+      display: block;
+    }
+  }
+  #{$self}__inner {
+		position: absolute;
+		top: 0;
+    bottom: 0;
+		right: 0;
+    width: 100%;
+		height: 100%;
+    z-index: 2;
+		//overflow-y: auto;
+    overflow: hidden;
+		-webkit-overflow-scrolling: touch;
+    background-color: rgba($primary, .8); //$beigebg;
+    transform: translate(100%, 0);
+    transition: all .8s ease;
+    padding: 4rem 0 8.8rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include media(md){
+      //min-width: 48rem;
+      width: 50%;
+    }
+
+    .container{
+      @include media(sm){
+        width: 70%;
+      }
+      @include media(md){
+        //width: 70%;
+      }
+      @include media(3xl){
+        width: 60%;
+      }
+    }
+  }
+  &__close{
+    position: absolute;
+    top: 2.4rem;
+    right: 2.4rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent; //rgba(249, 247, 243, .8);
+    //border: 2px solid $gray-600;
+    padding: .4rem;
+    cursor: pointer;
+    transition: all .5s ease;
+
+    @include media(lg){
+      width: 6.4rem;
+      height: 6.4rem;
+      padding: 1.8rem;
+      top: 4rem;
+      right: 4rem;
+    }
+
+    svg{
+      width: 100%;
+      height: auto;
+      fill: $white;
+      transition: all .3s ease;
+    }
+
+    &:hover{
+      border-color: $light;
+
+      svg{
+        fill: $light;
+      }
+    }
+  }
+  &__nav{
+    overflow-y: scroll;
+    ul li{
+      padding: 1.6rem;
+
+      a{
+        font-size: 2.4rem;
+        line-height: 1.1;
+        font-weight: 500;
+        color: $white !important;
+        transition: all .3s ease;
+
+        @include media(sm){
+          font-size: 3.2rem;
+        }
+        @include media(lg){
+          font-size: 3.2rem;
+        }
+        @include media(xl){
+          font-size: 3.6rem;
+        }
+        @include media(2xl){
+          font-size: 4rem;
+        }
+
+        &:hover{
+          text-decoration: none;
+          color: $light !important;
+        }
+      }
+    }
+  }
+}
+
+.c-menu-is-open {
+  overflow: hidden;
+	& body {
+		overflow: visible;
+		height: 100%;
+	}
+  .c-menu {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    visibility: visible;
+    background-color: $white;
+
+    &__image{
+      transform: translate(0, 0);
+    }
+    &__inner{
+      transform: translate(0, 0);
+    }
+  }
+}
+
+
+
+.c----menu {
+	$self: &;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+	background: rgba(0,0,0, .6);
+  transition: all .3s ease;
+  #{$self}__inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+    width: 100%;
+		height: 100%;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+  }
+
+  &__header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &__logo{
+    flex-basis: calc(100% - 7.2rem);
+    max-width: calc(100% - 7.2rem);
+    height: 7.2rem;
+    background-color: transparent;
+    border: 1px solid $light;
+    display: inline-flex;
+    align-items: center;
+    padding: 1.2rem 1.6rem;
+
+    .logo{
+      width: auto;
+      height: 48px;
+
+      @include media(md){
+          height: 56px;
+      }
+      @include media(xl){
+          height: 69px;
+      }
+    }
+  }
+  &__close{
+    flex-basis: 7.2rem;
+    /*position: absolute;
+    top: 0;
+    right: 0;*/
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    background-color: transparent; //rgba(249, 247, 243, .8);
+    border: 1px solid $light;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all .5s ease;
+
+    /*@include media(lg){
+      width: 6.4rem;
+      height: 6.4rem;
+      padding: 1.8rem;
+      top: 4rem;
+      right: 4rem;
+    }*/
+
+    svg{
+      width: 2.1rem; //100%;
+      height: auto;
+      fill: $white;
+      transition: all .3s ease;
+    }
+
+    &:hover{
+      border-color: $light;
+
+      svg{
+        fill: $light;
+      }
+    }
+  }
+  &__nav{
+    flex-basis: 100%;
+    max-width: 100%;
+    ul li{
+      padding: 1.6rem;
+
+      a{
+        font-size: 2.4rem;
+        line-height: 1.1;
+        color: $dark !important;//$beige50;
+        transition: all .3s ease;
+        font-weight: bold;
+
+        @include media(sm){
+          font-size: 3.2rem;
+        }
+        @include media(lg){
+          font-size: 3.2rem;
+        }
+        @include media(xl){
+          font-size: 3.6rem;
+        }
+        @include media(2xl){
+          font-size: 4rem;
+        }
+
+        &:hover{
+          text-decoration: none;
+          color: $white !important;
+          //font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.c----menu-is-open {
+  overflow: hidden;
+	& body {
+		overflow: visible;
+		height: 100%;
+	}
+  .c-menu {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+}

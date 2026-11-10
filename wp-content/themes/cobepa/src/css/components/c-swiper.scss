@@ -1,0 +1,66 @@
+.swiper {
+    position: relative;
+}
+.swiper-initialized {
+
+}
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    //top: 50%;
+    bottom: 0;
+    z-index: 1;
+    //transform: translate(0, -50%);
+    border-radius: 50px;
+    background-color: $secondary;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: $font-icons;
+    font-weight: 700;
+    line-height: 1;
+    transition: all .3s ease;
+
+    @include media(lg){
+        width: 45px;
+        height: 45px;
+    }
+
+    &:hover{
+        background-color: $primary;
+        color: $white;
+    }
+}
+.swiper-button-prev {
+    left: 10px;
+
+    &::before{
+        content: '\f060';
+    }
+}
+.swiper-button-next {
+    right: 10;
+
+    &::before{
+        content: '\f061';
+    }
+}
+.swiper-pagination {
+    text-align: center;
+}
+.swiper-pagination .swiper-pagination-bullet{
+    background: $secondary;
+    margin-left: 5px;
+    margin-right: 5px;
+    @include media(lg){
+        width: 12px;
+        height: 12px;
+    }
+
+    &.swiper-pagination-bullet-active{
+        background: $primary;
+    }
+}

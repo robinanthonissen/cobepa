@@ -1,0 +1,57 @@
+<div class="c-menu">
+	{#<div class="c-menu__image" style="background-image: url('{{ Image(options.menu_image).src }}');">#}
+	<div class="c-menu__image lazy" data-src="{{ Image(options.menu_image).src }}">
+	</div>
+
+	<div class="c-menu__inner">
+		<button class="c-menu__close js-c-menu-button">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+				<path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+			</svg>
+		</button>
+		<div class="container">
+			{% if main.items %}
+				<nav class="c-menu__nav">
+					<ul>
+					{% for item in main.items %}
+						<li class="{{ item.classes | join(' ') }}">
+							<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+							{#% include "menu.twig" with {'items': item.children} %#}
+						</li>
+					{% endfor %}
+					</ul>
+				</nav>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{#<div class="c-menu">
+	<div class="c-menu__inner">
+		<div class="c-menu__header">
+			<a href="{{ site.link }}" class="c-menu__logo">
+                <img class="logo" src="{{ theme.link }}/src/img/logo-anke-menu.svg">
+            </a>
+			<button class="c-menu__close js-c-menu-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+					<path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+				</svg>
+			</button>
+		</div>
+
+		<div class="container">
+			{% if items %}
+				<nav class="c-menu__nav">
+					<ul>
+					{% for item in items %}
+						<li class="{{ item.classes | join(' ') }}">
+							<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+							{#% include "menu.twig" with {'items': item.children} %#}
+						{#</li>
+					{% endfor %}
+					</ul>
+				</nav>
+			{% endif %}
+		</div>
+	</div>
+</div>#}

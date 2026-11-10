@@ -1,0 +1,42 @@
+{#
+/**
+ * Block Name: Contact Block
+ *
+ */
+#}
+<section id="{{ block.anchor ? block.anchor : 'block-contact-' ~ block.id }}" class="b-contact">
+    <div class="container">
+        <div class="row">
+            <div class="b-contact__form">
+                <div class="b-contact__form-inner" data-aos="fade-up">
+                    <h3>{{ fields.form_title }}</h3>
+                    <div class="text-500 b-contact__form-form">{{ fields.form }}</div>
+                </div>
+            </div>
+            <div class="b-contact__info">
+                <div class="b-contact__info-inner" data-aos="fade-up">
+                    {% if fields.info_title %}
+                        <h3>{{ fields.info_title }}</h3>
+                    {% endif %}
+                    <div class="text-500 b-contact__info-info">
+                        {% if options.address or options.zip_code or options.city %}
+							<a href="#">{{ options.address }}<br>{{ options.zip_code }} - {{ options.city }}</a>
+						{% endif %}
+						{% if options.phone %}
+							<a href="callto:{{ options.phone }}">{{ options.phone }}</a>
+						{% endif %}
+						{% if options.email %}
+							<a href="mailto:{{ options.email }}">{{ options.email }}</a>
+						{% endif %}
+						{% if options.vat %}
+							<a href="#">{{ options.vat }}</a>
+						{% endif %}
+                    </div>
+                    <div class="b-contact__info-socials">
+                        {% include 'partial/socials.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

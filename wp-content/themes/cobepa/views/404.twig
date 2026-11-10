@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<section class="error-container">
+	<div class="error-container__inner">
+		<h1>{{ options.error_404_title }}</h1> <!-- options is added to "add_to_context" in functions.php -->
+		<p>{{ options.error_404_description }}</p> <!-- options is added to "add_to_context" in functions.php -->
+
+		{% if options.error_404_button %}
+			<div class="mt-16">
+				<a href="{{ options.error_404_button.url }}" target="{{ options.error_404_button.target }}" class="btn btn-primary btn-blue btn-lg">{{ options.error_404_button.title }}</a>
+			</div>
+		{% endif %}
+	</div>
+	<div class="error-container__image u-full u-cover u-cover--center lazy" data-src="{{ TimberImage(options.error_404_image).src }}"></div>
+</section>
+{% endblock %}

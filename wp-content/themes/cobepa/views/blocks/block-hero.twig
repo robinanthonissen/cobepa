@@ -1,0 +1,28 @@
+{#
+/**
+ * Block Name: Hero Block
+ *
+ */
+#}
+<section id="{{ block.anchor ? block.anchor : 'block-hero-' ~ block.id }}" class="b-hero">
+    <div class="row b-hero__image lazy {% if not fields.full_height %}small{% endif %}" data-src="{{ Image(fields.image).src }}"{#{ Image(fields.image).src }}"#} {% if is_preview %}style="background-image: url('{{ Image(fields.image).src }}');"{% endif %}>
+        <div class="b-hero__filter"></div>
+        <div class="b-hero__content">
+            <div class="container">
+                <div class="row">
+                    <div class="b-hero__content-inner {% if fields.full_height %}text-center{% endif %}" data-aos="fade-up">
+                        <h1>{{ fields.title }}</h1>
+                        {% if fields.text %}
+                            <p class="text-600">{{ fields.text }}</p>
+                        {% endif %}
+                        {% if fields.button and fields.button.url %}
+                            <div class="button-container">
+                                <a class="btn btn-primary lg" href="{{ fields.button.url }}">{{ fields.button.title }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+a:not(.btn){
+	cursor: pointer;
+	transition: all .2s ease;
+	color: $primary;
+	&:hover{
+		text-decoration: none;
+		opacity: .85;
+	}
+}
+
+.btn{
+	transition: all .3s ease;
+	font-weight: 500;
+	&.btn-primary{
+		--bs-btn-color: var(--bs-white);
+		--bs-btn-hover-color: var(--bs-white);
+	}
+	&.btn-secondary{
+		--bs-btn-color: var(--bs-white);
+		--bs-btn-hover-color: var(--bs-white);
+	}
+	&.btn-light{}
+	&.btn-dark{}
+	&.btn-white{}
+	&.btn-black{}
+
+	&.btn-link{}
+
+	&.btn-outline-primary{}
+	&.btn-outline-secondary{}
+	&.btn-outline-light{}
+	&.btn-outline-dark{}
+	&.btn-outline-white{}
+	&.btn-outline-black{}
+
+	&:hover{
+		text-decoration: none;
+	}
+	
+	&.btn-md{
+		--bs-btn-padding-y: .8rem;
+		--bs-btn-padding-x: 2rem;
+		--bs-btn-font-size: 1.6rem;
+	}
+	&.btn-lg{
+		--bs-btn-padding-y: 1.2rem;
+		--bs-btn-padding-x: 3.2rem;
+		--bs-btn-font-size: 1.8rem;
+	}
+}

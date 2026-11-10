@@ -1,0 +1,83 @@
+body.login {
+  background: #000000;
+}
+body.login div#login {
+	width: 90%;
+	max-width: 40rem;
+}
+body.login div#login h1 {  }
+body.login div#login h1 a {
+  width: 100%;
+  height: 140px;
+  background-image: url('./../../img/logo-white.svg');
+  background-size: 140px;
+  background-position: 50%;
+  margin-bottom: 0;
+}
+body.login div#login p.message {
+  border-radius: 4px;
+}
+
+body.login #login #loginform {
+  border-radius: 8px;
+	border: 2px solid black;
+	box-shadow: none;
+}
+body.login div#login form#loginform p {}
+body.login div#login form#loginform p label {  }
+body.login div#login form#loginform input { box-shadow: none; }
+body.login div#login form#loginform input:focus { }
+body.login div#login form#loginform input#user_login {}
+body.login div#login form#loginform input#user_pass {}
+body.login div#login form#loginform p.forgetmenot {  }
+body.login div#login form#loginform p.forgetmenot input#rememberme {  }
+body.login div#login form#loginform p.submit { }
+body.login div#login form#loginform p.submit input#wp-submit { background-color: black; border: 1px solid black; color: white; text-shadow: none; box-shadow: none; font-weight: bold; border-radius: 5rem;}
+body.login div#login form#loginform p.submit input#wp-submit:hover { background-color: white; border: none; color: black; }
+
+input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: default;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.forgetmenot label {
+  line-height: 2.4rem;
+}
+.forgetmenot label::before {
+  content: '';
+  display: block;
+  float: left;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 4px;
+  outline: 1px solid #EFEFEF;
+  background: white;
+  margin-right: .8rem;
+  cursor: pointer;
+  transition: outline .3s ease;
+}
+.forgetmenot input:checked ~ label::before {
+  background: black;
+  border-color: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyNiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMiAxMS4wNzQzTDEwLjQzMDcgMTkuMDUxM0wyNCAyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 1rem auto;
+}
+
+body.login input[type=checkbox]:checked:before {
+  color: black;
+}
+
+/* FORM FORGET PASSWORD */
+body.login div#login p#nav { }
+body.login div#login p#nav a { color: #7F7D7F; opacity: 1; }
+body.login div#login p#nav a:hover { color: #BEBCBE; opacity: 1; }
+
+/* BACK TO */
+body.login div#login p#backtoblog { }
+body.login div#login p#backtoblog a { color: white; opacity: 1; }
+body.login div#login p#backtoblog a:hover { color: #BEBCBE; }

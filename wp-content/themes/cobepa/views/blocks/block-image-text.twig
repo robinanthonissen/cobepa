@@ -1,0 +1,32 @@
+{#
+/**
+ * Block Name: Image Text Block
+ *
+ */
+#}
+<section id="{{ block.anchor ? block.anchor : 'block-image-text-' ~ block.id }}" class="b-image-text">
+        <div class="b-image-text__inner py-30 py-md-40 py-lg-50 py-xl-60 {{ fields.background_color }}">
+            {% if not fields.full_width %}<div class="container">{% endif %}
+                <div class="row">
+                    <div class="col-12 col-md-6 b-image-text__image {% if fields.reverse %}order-md-3{% endif %}" data-aos="fade-up">
+                        <picture>
+                            <img class="lazy" {% if not is_preview %}src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== data-{% endif %}src="{{ TimberImage(fields.image).src('img-large') }}" alt="{{ fields.image.title }}">
+                        </picture>
+                    </div>
+                    <div class="col-12 col-md-6 b-image-text__content" data-aos="fade-up">
+                        <div class="b-image-text__content-inner">
+                            <h2>{{ fields.title }}</h2>
+                            {% if fields.text %}
+                                <div class="text-600">{{ fields.text }}</div>
+                            {% endif %}
+                            {% if fields.button and fields.button.url %}
+                                <div class="button-container">
+                                    <a class="btn btn-primary btn-lg" href="{{ fields.button.url }}">{{ fields.button.title }}</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% if not fields.full_width %}</div>{% endif %}
+        </div>
+</section>

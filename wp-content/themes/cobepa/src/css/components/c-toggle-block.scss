@@ -1,0 +1,15 @@
+.c-toggle-block {
+	$self: &;
+  #{$self}__trigger {
+    position: relative;
+    cursor: pointer;
+  }
+  #{$self}__content {
+    display: none;
+  }
+  &.is-active {
+    #{$self}__content {
+      display: block;
+    }
+  }
+}

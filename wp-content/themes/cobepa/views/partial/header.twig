@@ -1,0 +1,47 @@
+<header class="l-header bg-transparent">
+	<div class="container">
+        <div class="row">
+            <a href="{{ site.link }}" class="l-header__logo">
+                <img class="logo lazy" src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== data-src="{{ theme.link }}/src/img/brand/logo-white.svg">
+            </a>
+            <div class="row l-header__nav">
+                {% if main.items %}
+                    <nav>
+                        <ul class="d-flex flex-row flex-wrap">
+                            {% for item in main.items %}
+                                <li class="l-header__nav-item {{ item.classes|join(' ') }}">
+                                    {% if item.children %}
+                                        <div class="text-500 bold l-header__nav-link dropdown">
+                                            <a href="{{ item.link }}">{{ item.title }}</a>
+                                            <i class="fas fa-angle-down"></i>
+                                            <div class="l-header__nav-dropdown">
+                                                {% for child in item.children %}
+                                                    <a class="text-400 bold l-header__nav-dropdown-link" href="{{ child.link }}">{{ child.title }}</a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <a href="{{ item.link }}" class="text-500 bold l-header__nav-link">{{ item.title }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+            <button class="btn l-header__toggle js-c-menu-button">
+                <div class="menu__icon">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+
+	{#{% block header %}
+	<nav id="nav-main" class="nav-main" role="navigation">
+	</nav>
+	{% endblock %}#}
+</header>

@@ -1,0 +1,12 @@
+.c-socials{
+    display: flex;
+    flex-wrap: wrap;
+
+    a{
+        --bs-btn-font-size: 2rem;
+        --bs-btn-color: var(--bs-secondary);
+        --bs-btn-hover-color: var(--bs-secondary-faded);
+        &:hover{
+        }
+    }
+}

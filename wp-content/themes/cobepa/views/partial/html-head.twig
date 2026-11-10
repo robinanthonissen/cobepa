@@ -1,0 +1,24 @@
+<!doctype html>
+<html {{ site.language_attributes }}>
+  <head>
+    <meta charset="{{ site.charset }}">
+    <meta htta-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.theme.link }}/src/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.theme.link }}/src/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.theme.link }}/src/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="{{ site.theme.link }}/src/img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="{{ site.theme.link }}/src/img/favicons/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="">
+    <meta name="apple-mobile-web-app-status-bar-style" content="">
+
+    <!-- Fontawesome fonts -->
+    <script src="https://kit.fontawesome.com/6a475a89c8.js" crossorigin="anonymous"></script>
+
+    {{function('wp_head')}}
+    {% if options.mode == "production" %}
+      {{ options.ga_header }}
+    {% endif %}
+	</head>

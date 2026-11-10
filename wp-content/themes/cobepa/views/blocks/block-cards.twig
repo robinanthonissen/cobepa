@@ -1,0 +1,38 @@
+{#
+/**
+ * Block Name: Cards Block
+ *
+ */
+#}
+<section id="{{ block.anchor ? block.anchor : 'block-cards-' ~ block.id }}" class="b-cards">
+    
+    <div class="b-cards__inner py-30 py-md-40 py-lg-50 py-xl-60 {{ fields.background_color }}" data-aos="fade-up">
+        <div class="{% if not fields.full_width %}container{% endif %}">
+            <div class="row">
+                {% for card in fields.cards %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="b-cards__card">
+                            {% if card.image %}
+                                <div class="b-cards__card-img">
+                                    <picture>
+                                        <img class="lazy" {% if not is_preview %}src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== data-{% endif %}src="{{ TimberImage(card.image).src('img-large') }}" alt="{{ card.image.title }}">
+                                    </picture>
+                                </div>
+                            {% endif %}
+                            {% if card.title %}
+                                <h2>{{ card.title }}</h2>
+                            {% endif %}
+                            {% if card.content %}
+                                <div class="text-500">{{ card.content }}</div>
+                            {% endif %}
+                            {% if card.button %}
+                                <a href="{{ card.button.url }}" class="btn btn-primary btn-lg" target="{{ card.button.target }}">{{ card.button.title }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>
